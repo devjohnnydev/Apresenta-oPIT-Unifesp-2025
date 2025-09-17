@@ -112,7 +112,7 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="h-full flex flex-col justify-center safe-area-container bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800"
               style={{
-                minHeight: "100vh"
+                minHeight: "100dvh"
               }}
             >
               {/* Content */}

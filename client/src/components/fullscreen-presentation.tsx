@@ -32,7 +32,7 @@ export function FullscreenPresentation({
     >
       {/* Content Area */}
       <div className="flex-1 slide-content-wrapper">
-        <div className="slide-content-fullscreen">
+        <div className="slide-content-fullscreen responsive-container">
           <motion.div
             key={currentSlide}
             initial={{ opacity: 0, x: 50 }}
