@@ -96,66 +96,56 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="h-full flex flex-col justify-between py-4 px-2 overflow-hidden"
+              className="h-full flex flex-col justify-center py-8 px-4 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800"
               style={{
-                backgroundImage: `linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 51, 234, 0.1) 100%)`,
                 minHeight: "100vh"
               }}
             >
-              {/* 3D Background Image */}
-              <div className="absolute inset-0 z-0 opacity-30">
-                <img 
-                  src={techInnovationImage} 
-                  alt="Inovação Tecnológica 3D" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              
               {/* Content */}
-              <div className="relative z-10 flex flex-col h-full justify-between">
-                {/* Title and subtitle - Compact */}
+              <div className="flex flex-col h-full justify-center max-w-7xl mx-auto w-full">
+                {/* Title and subtitle */}
                 <motion.div 
-                  className="text-center mb-4"
+                  className="text-center mb-8"
                   initial={{ opacity: 0, y: -30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.6 }}
                 >
-                  <EditableText field="title" className="text-3xl lg:text-4xl font-bold text-primary mb-2 drop-shadow-lg">
+                  <EditableText field="title" className="text-4xl lg:text-5xl font-bold text-primary mb-4">
                     {slide.title}
                   </EditableText>
-                  <EditableText field="subtitle" className="text-lg text-muted-foreground mb-3 drop-shadow-sm">
+                  <EditableText field="subtitle" className="text-xl lg:text-2xl text-muted-foreground mb-8">
                     {slide.subtitle}
                   </EditableText>
                   
-                  {/* Presentation Info - Compact Grid */}
+                  {/* Presentation Info - Responsive Grid */}
                   <motion.div 
-                    className="bg-white/90 backdrop-blur-sm rounded-xl p-4 mb-4 shadow-xl border border-white/20"
+                    className="bg-white dark:bg-gray-800 rounded-xl p-6 mb-8 shadow-lg border border-gray-200 dark:border-gray-700 max-w-4xl mx-auto"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.5, duration: 0.6 }}
                   >
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 text-sm">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
                       <div data-testid="presentation-course" className="text-center">
-                        <div className="text-xs font-medium text-gray-600 mb-1">Curso</div>
-                        <EditableText field="presentationInfo.course" className="font-semibold text-primary">
+                        <div className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">Curso</div>
+                        <EditableText field="presentationInfo.course" className="font-semibold text-primary text-base">
                           {slide.content.presentationInfo.course}
                         </EditableText>
                       </div>
                       <div data-testid="presentation-professor" className="text-center">
-                        <div className="text-xs font-medium text-gray-600 mb-1">Professor</div>
-                        <EditableText field="presentationInfo.professor" className="font-semibold">
+                        <div className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">Professor</div>
+                        <EditableText field="presentationInfo.professor" className="font-semibold text-base">
                           {slide.content.presentationInfo.professor}
                         </EditableText>
                       </div>
                       <div data-testid="presentation-semester" className="text-center">
-                        <div className="text-xs font-medium text-gray-600 mb-1">Semestre</div>
-                        <EditableText field="presentationInfo.semester" className="font-semibold">
+                        <div className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">Semestre</div>
+                        <EditableText field="presentationInfo.semester" className="font-semibold text-base">
                           {slide.content.presentationInfo.semester}
                         </EditableText>
                       </div>
                       <div data-testid="presentation-duration" className="text-center">
-                        <div className="text-xs font-medium text-gray-600 mb-1">Evento</div>
-                        <EditableText field="presentationInfo.duration" className="font-semibold">
+                        <div className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">Evento</div>
+                        <EditableText field="presentationInfo.duration" className="font-semibold text-base">
                           {slide.content.presentationInfo.duration}
                         </EditableText>
                       </div>
@@ -163,19 +153,19 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
                   </motion.div>
                 </motion.div>
 
-                {/* Team Members - Optimized Layout */}
+                {/* Team Members - Simplified Layout */}
                 <motion.div 
-                  className="flex-1 flex items-center justify-center"
+                  className="flex justify-center mb-8"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.7, duration: 0.8 }}
                 >
-                  <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 w-full max-w-6xl">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 lg:gap-8 w-full max-w-6xl">
                     {slide.content.teamMembers.map((member: any, index: number) => (
                       <motion.div
                         key={index}
-                        initial={{ opacity: 0, rotateY: -90, scale: 0.5 }}
-                        animate={{ opacity: 1, rotateY: 0, scale: 1 }}
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        animate={{ opacity: 1, scale: 1 }}
                         transition={{ 
                           delay: 0.9 + index * 0.15, 
                           duration: 0.6, 
@@ -183,65 +173,44 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
                           stiffness: 100 
                         }}
                         whileHover={{ 
-                          scale: 1.05, 
-                          rotateY: 5,
+                          scale: 1.05,
                           transition: { duration: 0.3 }
                         }}
-                        className="perspective-1000"
+                        className="flex flex-col items-center"
                       >
-                        <Card className="p-3 text-center hover:shadow-2xl transition-all duration-300 bg-white/95 backdrop-blur-sm border border-white/30 transform-gpu">
-                          <motion.div 
-                            className="w-12 h-12 bg-gradient-to-br from-primary to-purple-600 rounded-full flex items-center justify-center mx-auto mb-2 shadow-lg"
-                            whileHover={{ rotate: 360 }}
-                            transition={{ duration: 0.6 }}
-                          >
-                            <span className="text-lg font-bold text-white">
+                        {/* Photo/Avatar */}
+                        <motion.div 
+                          className="w-20 h-20 lg:w-24 lg:h-24 bg-gradient-to-br from-primary to-purple-600 rounded-full flex items-center justify-center mb-4 shadow-lg overflow-hidden border-4 border-white dark:border-gray-700"
+                          whileHover={{ scale: 1.1 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          {member.photo ? (
+                            <img 
+                              src={member.photo} 
+                              alt={member.name}
+                              className="w-full h-full object-cover"
+                            />
+                          ) : (
+                            <span className="text-2xl lg:text-3xl font-bold text-white">
                               {member.name.split(' ').map((n: string) => n[0]).join('')}
                             </span>
-                          </motion.div>
-                          <EditableText 
-                            field={`teamMember.${index}.name`} 
-                            className="font-semibold text-xs mb-1 text-center leading-tight" 
-                          >
-                            <h4 data-testid={`member-name-${index}`} className="text-gray-800">
-                              {member.name}
-                            </h4>
-                          </EditableText>
-                          <EditableText 
-                            field={`teamMember.${index}.role`} 
-                            className="text-xs text-blue-600 mb-1 text-center font-medium"
-                          >
-                            <p data-testid={`member-role-${index}`}>
-                              {member.role}
-                            </p>
-                          </EditableText>
-                          <EditableText 
-                            field={`teamMember.${index}.ra`} 
-                            className="text-xs text-gray-500 text-center"
-                          >
-                            <p data-testid={`member-ra-${index}`}>
-                              RA: {member.ra}
-                            </p>
-                          </EditableText>
-                        </Card>
+                          )}
+                        </motion.div>
+                        
+                        {/* Name */}
+                        <EditableText 
+                          field={`teamMember.${index}.name`} 
+                          className="font-semibold text-center text-sm lg:text-base leading-tight" 
+                        >
+                          <h4 data-testid={`member-name-${index}`} className="text-gray-800 dark:text-gray-200">
+                            {member.name}
+                          </h4>
+                        </EditableText>
                       </motion.div>
                     ))}
                   </div>
                 </motion.div>
 
-                {/* 3D Team Collaboration Image */}
-                <motion.div 
-                  className="text-center"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 1.5, duration: 0.8 }}
-                >
-                  <img 
-                    src={teamCollabImage} 
-                    alt="Colaboração em Equipe 3D" 
-                    className="w-full max-w-lg mx-auto h-20 object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
-                  />
-                </motion.div>
               </div>
             </motion.div>
           );
