@@ -451,25 +451,25 @@ export class MemStorage implements IStorage {
                 {
                   title: "Startupi (2024)",
                   description: "Startups no Brasil captaram R$ 13,9 bi em 2024",
-                  url: "startupi.com.br",
+                  url: "https://www.startupi.com.br",
                   color: "blue"
                 },
                 {
                   title: "Liga Ventures (2024)",
                   description: "Balanço do Ecossistema de Startups no Brasil em 2024",
-                  url: "liga.ventures",
+                  url: "https://www.liga.ventures",
                   color: "green"
                 },
                 {
                   title: "Sebrae (2023)",
                   description: "Insights do panorama nacional das startups atendidas pelo Sebrae",
-                  url: "observatorio.sebraestartups.com.br",
+                  url: "https://observatorio.sebraestartups.com.br",
                   color: "purple"
                 },
                 {
                   title: "Anjos do Brasil (2023)",
                   description: "O crescimento do investimento Anjo",
-                  url: "anjosdoBrasil.net",
+                  url: "https://www.anjosdoBrasil.net",
                   color: "orange"
                 }
               ]
@@ -482,13 +482,13 @@ export class MemStorage implements IStorage {
                 {
                   title: "Nubank",
                   description: "Case de sucesso do Nubank apostando no marketing digital",
-                  url: "anormedia.com.br",
+                  url: "https://anormedia.com.br/case-nubank",
                   color: "purple"
                 },
                 {
                   title: "QuintoAndar",
                   description: "QuintoAndar capta US$ 300 milhões e passa a valer US$ 4 bilhões",
-                  url: "exame.com",
+                  url: "https://exame.com/negocios/quintoandar-captacao-300-milhoes",
                   color: "red"
                 }
               ]
@@ -501,19 +501,19 @@ export class MemStorage implements IStorage {
                 {
                   title: "Sebrae (2023)",
                   description: "Tipos de investimento em startup: o que é e como atrair investidores",
-                  url: "sebrae-sc.com.br",
+                  url: "https://sebrae-sc.com.br/blog/tipos-investimento-startup",
                   color: "blue"
                 },
                 {
                   title: "DXA Invest (2024)",
                   description: "Diferenças entre venture capital, equity crowdfunding e investimento anjo",
-                  url: "dxainvest.com",
+                  url: "https://dxainvest.com/diferencas-venture-capital-crowdfunding",
                   color: "green"
                 },
                 {
                   title: "Stripe (2024)",
                   description: "Como levantar capital para sua startup",
-                  url: "stripe.com",
+                  url: "https://stripe.com/guides/startup-funding",
                   color: "purple"
                 }
               ]
@@ -526,13 +526,13 @@ export class MemStorage implements IStorage {
                 {
                   title: "FINEP (2024)",
                   description: "Chamadas Públicas",
-                  url: "finep.gov.br",
+                  url: "https://www.finep.gov.br/chamadas-publicas",
                   color: "blue"
                 },
                 {
                   title: "MCTI/FINEP (2024)",
                   description: "Centros Temáticos 2024",
-                  url: "finep.gov.br",
+                  url: "https://www.finep.gov.br/apoio-e-financiamento/programas-e-linhas/centros-tematicos",
                   color: "green"
                 }
               ]
@@ -545,7 +545,7 @@ export class MemStorage implements IStorage {
                 {
                   title: "Global Goals (2024)",
                   description: "ODS 9: Indústria, Inovação e Infraestrutura",
-                  url: "globalgoals.org",
+                  url: "https://www.globalgoals.org/goals/9-industry-innovation-and-infrastructure/",
                   color: "green"
                 }
               ]
