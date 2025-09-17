@@ -99,6 +99,62 @@
     @apply opacity-100;
   }
 
+  /* Responsive Base Styles */
+  .responsive-container {
+    @apply w-full max-w-full px-4 mx-auto;
+    box-sizing: border-box;
+  }
+
+  .responsive-grid {
+    @apply grid gap-4 w-full;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .responsive-card {
+    @apply flex flex-col p-4 rounded-lg border bg-card text-card-foreground shadow-sm;
+    min-height: 200px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .responsive-text {
+    @apply text-sm leading-relaxed;
+    hyphens: auto;
+  }
+
+  /* Mobile-first responsive design */
+  .mobile-stack {
+    @apply flex flex-col gap-4;
+  }
+
+  .tablet-grid {
+    @apply md:grid md:grid-cols-2 md:gap-6;
+  }
+
+  .desktop-grid {
+    @apply lg:grid-cols-3 xl:grid-cols-4 lg:gap-8;
+  }
+
+  /* Safe area adjustments for mobile browsers */
+  .safe-area-container {
+    padding-top: env(safe-area-inset-top, 1rem);
+    padding-bottom: env(safe-area-inset-bottom, 1rem);
+    padding-left: env(safe-area-inset-left, 1rem);
+    padding-right: env(safe-area-inset-right, 1rem);
+    min-height: calc(100vh - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Viewport height adjustments */
+  .full-viewport {
+    min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height for mobile */
+  }
+
+  .content-height {
+    min-height: calc(100vh - 8rem); /* Account for navigation and controls */
+    min-height: calc(100dvh - 8rem);
+  }
+
   /* 3D Perspective and Modern Animations */
   .perspective-1000 {
     perspective: 1000px;
@@ -171,21 +227,211 @@
   .fullscreen-mode {
     @apply fixed inset-0 z-50 bg-background;
     height: 100vh;
+    height: 100dvh; /* Dynamic viewport height for mobile */
     width: 100vw;
   }
 
   .slide-content-wrapper {
-    @apply w-full h-full flex flex-col justify-center items-center;
+    @apply w-full h-full flex flex-col justify-center items-center safe-area-container;
     min-height: calc(100vh - 80px); /* Account for controls */
-    padding: 2rem;
+    min-height: calc(100dvh - 80px);
+    padding: 1rem;
   }
 
   .slide-content-fullscreen {
     @apply w-full max-w-7xl mx-auto;
     height: calc(100vh - 160px); /* Account for controls and padding */
+    height: calc(100dvh - 160px);
     display: flex;
     flex-direction: column;
     justify-content: center;
+    overflow: auto;
+  }
+
+  /* Responsive Media Queries */
+  
+  /* Mobile devices (up to 640px) */
+  @media (max-width: 640px) {
+    .slide-content-wrapper {
+      padding: 0.75rem;
+      min-height: calc(100vh - 60px);
+      min-height: calc(100dvh - 60px);
+    }
+    
+    .slide-content-fullscreen {
+      height: calc(100vh - 120px);
+      height: calc(100dvh - 120px);
+    }
+    
+    .responsive-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    
+    .responsive-card {
+      padding: 1rem;
+      min-height: auto;
+    }
+    
+    /* Team member grid adjustments */
+    .team-grid-mobile {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 1rem !important;
+    }
+    
+    /* Text size adjustments for mobile */
+    .mobile-title {
+      font-size: 1.75rem !important;
+      line-height: 2rem !important;
+      margin-bottom: 0.75rem !important;
+    }
+    
+    .mobile-subtitle {
+      font-size: 1rem !important;
+      line-height: 1.5rem !important;
+      margin-bottom: 1.5rem !important;
+    }
+    
+    /* Chart container mobile adjustments */
+    .chart-container {
+      height: 250px;
+    }
+  }
+  
+  /* Tablet devices (641px to 1024px) */
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .slide-content-wrapper {
+      padding: 1.5rem;
+    }
+    
+    .responsive-grid {
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .team-grid-tablet {
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 1.5rem !important;
+    }
+    
+    .tablet-title {
+      font-size: 2.25rem !important;
+      line-height: 2.5rem !important;
+    }
+    
+    .tablet-subtitle {
+      font-size: 1.125rem !important;
+      line-height: 1.75rem !important;
+    }
+    
+    .chart-container {
+      height: 320px;
+    }
+  }
+  
+  /* Desktop and larger screens (1025px+) */
+  @media (min-width: 1025px) {
+    .slide-content-wrapper {
+      padding: 2rem;
+    }
+    
+    .responsive-grid {
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 2rem;
+    }
+    
+    .team-grid-desktop {
+      grid-template-columns: repeat(5, 1fr) !important;
+      gap: 2rem !important;
+    }
+    
+    .desktop-title {
+      font-size: 3rem !important;
+      line-height: 1 !important;
+    }
+    
+    .desktop-subtitle {
+      font-size: 1.5rem !important;
+      line-height: 2rem !important;
+    }
+    
+    .chart-container {
+      height: 400px;
+    }
+  }
+  
+  /* Large screens (1440px+) */
+  @media (min-width: 1440px) {
+    .slide-content-wrapper {
+      padding: 3rem;
+    }
+    
+    .responsive-grid {
+      gap: 2.5rem;
+    }
+    
+    .team-grid-desktop {
+      gap: 2.5rem !important;
+    }
+  }
+  
+  /* Ultra-wide screens (1920px+) */
+  @media (min-width: 1920px) {
+    .slide-content-wrapper {
+      padding: 4rem;
+    }
+    
+    .slide-content-fullscreen {
+      max-width: 90vw;
+    }
+  }
+  
+  /* Responsive flexbox utilities */
+  .responsive-flex {
+    @apply flex flex-wrap gap-4;
+  }
+  
+  .responsive-flex-mobile {
+    @apply flex-col;
+  }
+  
+  .responsive-flex-tablet {
+    @apply md:flex-row md:items-center;
+  }
+  
+  .responsive-flex-desktop {
+    @apply lg:justify-between;
+  }
+  
+  /* Image responsive behavior */
+  .responsive-image {
+    @apply w-full h-auto max-w-full object-contain;
+    max-height: 60vh;
+  }
+  
+  /* Text content responsive behavior */
+  .responsive-content {
+    @apply text-sm leading-relaxed;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  /* Card content spacing */
+  .card-content-responsive {
+    @apply space-y-3;
+  }
+  
+  @media (min-width: 641px) {
+    .card-content-responsive {
+      @apply space-y-4;
+    }
+  }
+  
+  @media (min-width: 1025px) {
+    .card-content-responsive {
+      @apply space-y-6;
+    }
   }
 }
 
