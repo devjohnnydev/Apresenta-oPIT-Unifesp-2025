@@ -110,7 +110,7 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="h-full flex flex-col justify-center py-8 px-4 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800"
+              className="h-full flex flex-col justify-center safe-area-container bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800"
               style={{
                 minHeight: "100vh"
               }}
@@ -124,10 +124,10 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.6 }}
                 >
-                  <EditableText field="title" className="text-4xl lg:text-5xl font-bold text-primary mb-4">
+                  <EditableText field="title" className="mobile-title tablet-title desktop-title font-bold text-primary mb-4">
                     {slide.title}
                   </EditableText>
-                  <EditableText field="subtitle" className="text-xl lg:text-2xl text-muted-foreground mb-8">
+                  <EditableText field="subtitle" className="mobile-subtitle tablet-subtitle desktop-subtitle text-muted-foreground mb-8">
                     {slide.subtitle}
                   </EditableText>
                   
@@ -138,7 +138,7 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.5, duration: 0.6 }}
                   >
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+                    <div className="responsive-grid gap-4 text-sm">
                       <div data-testid="presentation-course" className="text-center">
                         <div className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">Curso</div>
                         <EditableText field="presentationInfo.course" className="font-semibold text-primary text-base">
@@ -174,7 +174,7 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.7, duration: 0.8 }}
                 >
-                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 lg:gap-8 w-full max-w-6xl">
+                  <div className="responsive-grid team-grid-mobile team-grid-tablet team-grid-desktop w-full max-w-6xl">
                     {slide.content.teamMembers.map((member: any, index: number) => (
                       <motion.div
                         key={index}
@@ -272,10 +272,10 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
             className="space-y-8"
           >
             <div className="mb-8">
-              <EditableText field="title" className="text-4xl font-bold text-primary mb-4">
+              <EditableText field="title" className="mobile-title tablet-title desktop-title font-bold text-primary mb-4">
                 {slide.title}
               </EditableText>
-              <EditableText field="subtitle" className="text-lg text-muted-foreground">
+              <EditableText field="subtitle" className="mobile-subtitle tablet-subtitle desktop-subtitle text-muted-foreground">
                 {slide.subtitle}
               </EditableText>
             </div>
@@ -286,12 +286,12 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
                 <img 
                   src={ecosystemImage} 
                   alt="Ecossistema de Investimento" 
-                  className="max-w-full max-h-64 object-contain rounded-lg shadow-md"
+                  className="responsive-image rounded-lg shadow-md"
                 />
               </div>
             )}
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="responsive-grid mobile-stack tablet-grid desktop-grid">
               {slide.content.sections?.map((section: any, index: number) => (
                 <motion.div
                   key={index}
@@ -299,8 +299,8 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <Card className="h-full hover:shadow-md transition-shadow">
-                    <CardContent className="p-6">
+                  <Card className="responsive-card hover:shadow-md transition-shadow">
+                    <CardContent className="card-content-responsive">
                       <div className="flex items-center gap-3 mb-4">
                         <div className={cn(
                           "w-12 h-12 rounded-lg flex items-center justify-center",
@@ -337,10 +337,10 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
             className="space-y-8 pb-24"
           >
             <div className="mb-8">
-              <EditableText field="title" className="text-4xl font-bold text-primary mb-4">
+              <EditableText field="title" className="mobile-title tablet-title desktop-title font-bold text-primary mb-4">
                 {slide.title}
               </EditableText>
-              <EditableText field="subtitle" className="text-lg text-muted-foreground">
+              <EditableText field="subtitle" className="mobile-subtitle tablet-subtitle desktop-subtitle text-muted-foreground">
                 {slide.subtitle}
               </EditableText>
             </div>
@@ -348,7 +348,7 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
             {/* Phases content (Impulso Inicial) */}
             {slide.content.phases && (
               <div className="space-y-8">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="responsive-grid mobile-stack tablet-grid desktop-grid">
                   {slide.content.phases.map((phase: any, index: number) => (
                     <motion.div
                       key={index}
@@ -356,8 +356,8 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.2 }}
                     >
-                      <Card className="h-full hover:shadow-md transition-shadow">
-                        <CardContent className="p-6">
+                      <Card className="responsive-card hover:shadow-md transition-shadow">
+                        <CardContent className="card-content-responsive">
                           <div className="flex items-center gap-3 mb-4">
                             <div className={cn(
                               "w-12 h-12 rounded-lg flex items-center justify-center",
@@ -465,7 +465,7 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
                     <img 
                       src={mvpImage} 
                       alt="Processo de Validação MVP" 
-                      className="max-w-full max-h-64 object-contain rounded-lg shadow-md"
+                      className="responsive-image rounded-lg shadow-md"
                     />
                   </div>
                 )}
@@ -498,7 +498,7 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
                 </Card>
 
                 {/* Characteristics */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="responsive-grid mobile-stack tablet-grid desktop-grid">
                   {slide.content.characteristics.map((char: any, index: number) => (
                     <Card key={index} className="p-6">
                       <div className="flex items-center gap-3 mb-4">
@@ -545,7 +545,7 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
                     <img 
                       src={angelImage} 
                       alt="Investidores Anjo" 
-                      className="max-w-full max-h-64 object-contain rounded-lg shadow-md"
+                      className="responsive-image rounded-lg shadow-md"
                     />
                   </div>
                 )}
@@ -569,7 +569,7 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
                 {slide.content.investors && (
                   <div>
                     <h3 className="text-2xl font-semibold mb-6">Tipos de Investidores</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="responsive-grid mobile-stack tablet-grid desktop-grid">
                       {slide.content.investors.map((investor: any, index: number) => (
                         <Card key={index} className="p-6">
                           <h4 className="text-xl font-semibold mb-3 text-primary">{investor.type}</h4>
@@ -591,7 +591,7 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
                 {slide.content.useCases && (
                   <div>
                     <h3 className="text-2xl font-semibold mb-6">Aplicação dos Recursos</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="responsive-grid mobile-stack tablet-grid desktop-grid">
                       {slide.content.useCases.map((useCase: any, index: number) => (
                         <Card key={index} className="p-6">
                           <h4 className="text-lg font-semibold mb-4 text-primary">{useCase.category}</h4>
@@ -613,7 +613,7 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
                 {slide.content.milestones && (
                   <div>
                     <h3 className="text-2xl font-semibold mb-6">Marcos Importantes</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="responsive-grid mobile-stack tablet-grid desktop-grid">
                       {slide.content.milestones.map((milestone: any, index: number) => (
                         <Card key={index} className="p-6 text-center bg-gradient-to-br from-blue-50 to-green-50">
                           <div className="text-2xl font-bold text-primary mb-2">{milestone.target}</div>
@@ -685,7 +685,7 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
                 {slide.content.benefits && (
                   <div>
                     <h3 className="text-2xl font-semibold mb-6">Benefícios dos Programas</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="responsive-grid mobile-stack tablet-grid desktop-grid">
                       {slide.content.benefits.map((benefit: any, index: number) => (
                         <Card key={index} className="p-6">
                           <h4 className="text-lg font-semibold mb-4 text-primary">{benefit.category}</h4>
@@ -709,7 +709,7 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
                     <img 
                       src={acceleratorImage} 
                       alt="Ecossistema de Aceleradoras e Incubadoras" 
-                      className="max-w-full max-h-64 object-contain rounded-lg shadow-md"
+                      className="responsive-image rounded-lg shadow-md"
                     />
                   </div>
                 )}
@@ -885,7 +885,7 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
                 )}
 
                 {slide.content.statistics && (
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="responsive-grid mobile-stack tablet-grid desktop-grid">
                     {slide.content.statistics.map((stat: any, index: number) => (
                       <Card key={index} className="p-6 text-center bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200">
                         <div className="text-3xl font-bold text-blue-600 mb-2 animate-count-up" data-testid={`stat-value-${index}`}>
@@ -912,10 +912,10 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
             className="space-y-8 pb-24"
           >
             <div className="mb-8">
-              <EditableText field="title" className="text-4xl font-bold text-primary mb-4">
+              <EditableText field="title" className="mobile-title tablet-title desktop-title font-bold text-primary mb-4">
                 {slide.title}
               </EditableText>
-              <EditableText field="subtitle" className="text-lg text-muted-foreground">
+              <EditableText field="subtitle" className="mobile-subtitle tablet-subtitle desktop-subtitle text-muted-foreground">
                 {slide.subtitle}
               </EditableText>
             </div>
@@ -924,7 +924,7 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
             {slide.content.keyTakeaways && (
               <div className="space-y-6">
                 <h3 className="text-2xl font-semibold">Principais Aprendizados</h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="responsive-grid mobile-stack tablet-grid desktop-grid">
                   {slide.content.keyTakeaways.map((takeaway: any, index: number) => (
                     <motion.div
                       key={index}
@@ -1006,10 +1006,10 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
             className="space-y-8"
           >
             <div className="mb-8">
-              <EditableText field="title" className="text-4xl font-bold text-primary mb-4">
+              <EditableText field="title" className="mobile-title tablet-title desktop-title font-bold text-primary mb-4">
                 {slide.title}
               </EditableText>
-              <EditableText field="subtitle" className="text-lg text-muted-foreground">
+              <EditableText field="subtitle" className="mobile-subtitle tablet-subtitle desktop-subtitle text-muted-foreground">
                 {slide.subtitle}
               </EditableText>
             </div>
@@ -1094,10 +1094,10 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
             className="space-y-8 pb-24"
           >
             <div className="mb-8">
-              <EditableText field="title" className="text-4xl font-bold text-primary mb-4">
+              <EditableText field="title" className="mobile-title tablet-title desktop-title font-bold text-primary mb-4">
                 {slide.title}
               </EditableText>
-              <EditableText field="subtitle" className="text-lg text-muted-foreground">
+              <EditableText field="subtitle" className="mobile-subtitle tablet-subtitle desktop-subtitle text-muted-foreground">
                 {slide.subtitle}
               </EditableText>
             </div>
@@ -1163,7 +1163,7 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="responsive-grid mobile-stack tablet-grid desktop-grid">
                     {slide.content.interactionSpaces.map((space: any, index: number) => (
                       <Card key={index} className="p-4 shadow-sm">
                         <h4 className="font-semibold text-gray-800 mb-2" data-testid={`interaction-space-title-${index}`}>
@@ -1214,10 +1214,10 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
             className="space-y-8 pb-24"
           >
             <div className="mb-8">
-              <EditableText field="title" className="text-4xl font-bold text-primary mb-4">
+              <EditableText field="title" className="mobile-title tablet-title desktop-title font-bold text-primary mb-4">
                 {slide.title}
               </EditableText>
-              <EditableText field="subtitle" className="text-lg text-muted-foreground">
+              <EditableText field="subtitle" className="mobile-subtitle tablet-subtitle desktop-subtitle text-muted-foreground">
                 {slide.subtitle}
               </EditableText>
             </div>
