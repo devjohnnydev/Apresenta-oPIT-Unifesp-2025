@@ -24,9 +24,52 @@ export class MemStorage implements IStorage {
       {
         id: "slide-1",
         type: "intro",
+        title: "O Ecossistema de Investimento Privado",
+        subtitle: "Captação de Recursos e Gestão de Projetos de Inovação Tecnológica",
+        content: {
+          presentationInfo: {
+            course: "Gestão de Projetos de Inovação Tecnológica",
+            professor: "Prof. Dr. Nome do Professor",
+            semester: "2025.2",
+            duration: "Seminário sobre Captação de Recursos e Gestão de Projetos de Inovação Tecnológica"
+          },
+          teamMembers: [
+            {
+              name: "Johnny Braga de Oliveira",
+              role: "Coordenador do Projeto",
+              ra: "123456789"
+            },
+            {
+              name: "Maria Silva Santos",
+              role: "Analista de Mercado",
+              ra: "987654321"
+            },
+            {
+              name: "Carlos Eduardo Lima",
+              role: "Especialista em Finanças",
+              ra: "456789123"
+            },
+            {
+              name: "Ana Paula Costa",
+              role: "Gestora de Inovação",
+              ra: "321654987"
+            },
+            {
+              name: "Roberto Fernandes",
+              role: "Consultor Estratégico",
+              ra: "789123456"
+            }
+          ]
+        },
+        order: 1
+      },
+      {
+        id: "slide-2",
+        type: "intro",
         title: "Tipos de Captação de Recursos",
         subtitle: "Ecossistema de investimento para startups em estágio inicial",
         content: {
+          ecosystemImage: true,
           sections: [
             {
               title: "Investidores-anjo",
@@ -70,10 +113,10 @@ export class MemStorage implements IStorage {
             }
           ]
         },
-        order: 1
+        order: 2
       },
       {
-        id: "slide-2",
+        id: "slide-3",
         type: "content",
         title: "Desafios e Oportunidades",
         subtitle: "Cenário atual para startups brasileiras",
@@ -113,10 +156,10 @@ export class MemStorage implements IStorage {
             }
           ]
         },
-        order: 2
+        order: 3
       },
       {
-        id: "slide-3",
+        id: "slide-4",
         type: "chart",
         title: "Evidências e Dados",
         subtitle: "Volume de investimentos e casos de sucesso",
@@ -513,11 +556,18 @@ export class MemStorage implements IStorage {
       }
     ];
 
+    // Normalize slide IDs and order to ensure consistency
+    const normalizedSlides: SlideData[] = defaultSlides.map((slide, index) => ({
+      ...slide,
+      id: `slide-${index + 1}`,
+      order: index + 1
+    }));
+
     const defaultPresentation: Presentation = {
       id: "default",
       title: "O Ecossistema de Investimento Privado",
       description: "Apresentação acadêmica sobre startups em estágio inicial",
-      slides: defaultSlides,
+      slides: normalizedSlides,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
     };
