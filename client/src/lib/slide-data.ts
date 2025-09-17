@@ -5,22 +5,22 @@ export const defaultSlides: SlideData[] = [
     id: "slide-1",
     type: "intro",
     title: "O Ecossistema de Investimento Privado",
-    subtitle: "Startups em Estágio Inicial: Do Impulso ao Crescimento",
+    subtitle: "Startups em Estágio Inicial: Panorama Brasileiro 2024",
     content: {
       presentationInfo: {
-        title: "Seminário em Grupo - Tema I",
-        institution: "Universidade Federal",
-        course: "Administração de Empresas",
-        professor: "Prof. Dr. João Silva",
+        title: "Seminário sobre Captação de Recursos e Gestão de Projetos de Inovação Tecnológica",
+        institution: "Digite o nome da Instituição",
+        course: "Digite o nome da Disciplina",
+        professor: "Digite o nome do Professor",
         semester: "2024.2",
-        duration: "25 minutos + perguntas"
+        duration: "20 minutos de apresentação + 20 minutos de discussão"
       },
       teamMembers: [
-        { name: "Ana Carolina Santos", role: "Coordenadora de Pesquisa", ra: "2021001" },
-        { name: "Bruno Henrique Lima", role: "Especialista em Venture Capital", ra: "2021002" },
-        { name: "Carla Fernanda Costa", role: "Analista de Mercado", ra: "2021003" },
-        { name: "Diego Rodrigues Alves", role: "Especialista em Startups", ra: "2021004" },
-        { name: "Elena Marques Silva", role: "Pesquisadora de Políticas", ra: "2021005" }
+        { name: "Membro 1", role: "Coordenador(a) de Pesquisa", ra: "RA 1" },
+        { name: "Membro 2", role: "Especialista em Venture Capital", ra: "RA 2" },
+        { name: "Membro 3", role: "Analista de Mercado", ra: "RA 3" },
+        { name: "Membro 4", role: "Especialista em Startups", ra: "RA 4" },
+        { name: "Membro 5", role: "Pesquisador(a) de Políticas", ra: "RA 5" }
       ],
       backgroundImage: "Team_presentation_academic_background_9df5e1d2.png"
     },
@@ -29,41 +29,41 @@ export const defaultSlides: SlideData[] = [
   {
     id: "slide-2", 
     type: "intro",
-    title: "Visão Geral do Ecossistema",
-    subtitle: "Mapeando o caminho do investimento privado em startups",
+    title: "Panorama Brasileiro 2024",
+    subtitle: "Um ecossistema em crescimento e transformação",
     content: {
       sections: [
         {
-          title: "O Impulso Inicial",
-          icon: "fas fa-rocket",
+          title: "Marco Legal das Startups",
+          icon: "fas fa-gavel",
           color: "blue",
           items: [
-            "Ideia inovadora e identificação do problema",
-            "Formação da equipe fundadora",
-            "Primeiras validações de mercado",
-            "Recursos próprios e bootstrapping"
+            "Lei Complementar nº 182/2021 em vigor",
+            "Ambiente regulatório favorável",
+            "Compras governamentais simplificadas",
+            "Definição legal clara de startup"
           ]
         },
         {
-          title: "Validação e MVP",
-          icon: "fas fa-flask",
+          title: "Números do Ecossistema",
+          icon: "fas fa-chart-line",
           color: "green", 
           items: [
-            "Desenvolvimento do produto mínimo viável",
-            "Testes com usuários reais",
-            "Iteração baseada em feedback",
-            "Validação do modelo de negócios"
+            "R$ 13,9 bilhões captados em 2024 (+50% vs 2023)",
+            "389 rodadas de investimento realizadas",
+            "65,1% das startups nunca receberam aportes",
+            "Brasil representa 50% dos aportes na América Latina"
           ]
         },
         {
-          title: "Captação de Recursos",
+          title: "Distribuição de Investimentos",
           icon: "fas fa-coins",
           color: "orange",
           items: [
-            "Investidores-anjo: R$ 50k - R$ 500k",
-            "Capital semente: R$ 500k - R$ 3M",
-            "Aceleradoras e incubadoras",
-            "Preparação para rodadas maiores"
+            "39,8% via investidores-anjo",
+            "13,9% via programas de aceleração",
+            "7,2% via Corporate Venture Capital",
+            "3,4% via fundos de Venture Capital"
           ]
         }
       ],
@@ -74,62 +74,71 @@ export const defaultSlides: SlideData[] = [
   {
     id: "slide-3",
     type: "content", 
-    title: "O Impulso Inicial",
-    subtitle: "Transformando ideias em oportunidades de negócio",
+    title: "Desafios dos Ecossistemas Emergentes",
+    subtitle: "Análise baseada em pesquisa científica (Porto Alegre como estudo de caso)",
     content: {
-      phases: [
+      research: {
+        title: "Estudo: Por que startups falham em ecossistemas emergentes?",
+        source: "REGEPE - Revista de Empreendedorismo e Gestão de Pequenas Empresas, 2023",
+        methodology: "Entrevistas com empreendedores cujas startups falharam em Porto Alegre"
+      },
+      domains: [
         {
-          title: "Identificação do Problema",
-          icon: "fas fa-search",
-          color: "blue",
-          description: "Reconhecer uma dor real do mercado que pode ser solucionada de forma inovadora",
+          title: "Políticas Públicas",
+          icon: "fas fa-university",
+          color: "red",
+          level: "Muito Problemático",
+          description: "Falta de programas específicos e burocracia excessiva",
           keyPoints: [
-            "Pesquisa de mercado inicial",
-            "Entrevistas com potenciais clientes",
-            "Análise da concorrência existente",
-            "Validação da relevância do problema"
+            "Marco Legal implementado apenas em 2021",
+            "Compras públicas ainda complexas",
+            "Poucos incentivos fiscais regionais",
+            "Descontinuidade de programas governamentais"
           ]
         },
         {
-          title: "Formação da Equipe",
-          icon: "fas fa-users",
-          color: "green",
-          description: "Reunir profissionais complementares com visão compartilhada",
+          title: "Financiamento",
+          icon: "fas fa-money-bill-wave",
+          color: "red",
+          level: "Muito Problemático",
+          description: "Acesso limitado a capital especialmente em estágios iniciais",
           keyPoints: [
-            "Perfis técnicos e de negócios",
-            "Experiência no setor-alvo",
-            "Comprometimento e dedicação",
-            "Química e alinhamento cultural"
+            "65,1% das startups nunca receberam aportes",
+            "Concentração de investidores no eixo SP-RJ",
+            "Ticket médio ainda baixo (R$ 1,1 milhão)",
+            "Poucos fundos seed especializados"
           ]
         },
         {
-          title: "Recursos Iniciais",
-          icon: "fas fa-piggy-bank", 
-          color: "purple",
-          description: "Mobilizar recursos próprios para dar os primeiros passos",
+          title: "Cultura e Suporte",
+          icon: "fas fa-handshake",
+          color: "orange",
+          level: "Necessita Melhorias",
+          description: "Cultura empreendedora em desenvolvimento",
           keyPoints: [
-            "Economia pessoal dos fundadores",
-            "Trabalho em paralelo a empregos",
-            "Recursos familiares (FFF - Friends, Family, Fools)",
-            "Foco na eficiência máxima"
+            "Crescimento de comunidades de startups",
+            "Aumento de eventos e networking",
+            "Ainda há receio cultural ao fracasso",
+            "Mentoria disponível mas não estruturada"
           ]
         }
       ],
-      challenges: [
+      solutions: [
         {
-          title: "Incerteza e Risco",
-          description: "Alto nível de incerteza sobre viabilidade e aceitação do mercado",
-          color: "red"
+          area: "Estrutural",
+          actions: [
+            "Fortalecimento de hubs regionais",
+            "Programas de capacitação continuada",
+            "Conexão universidade-mercado"
+          ]
         },
         {
-          title: "Recursos Limitados", 
-          description: "Orçamento restrito para desenvolvimento e marketing",
-          color: "orange"
-        },
-        {
-          title: "Falta de Experiência",
-          description: "Curva de aprendizado íngreme para novos empreendedores",
-          color: "yellow"
+          area: "Financeiro", 
+          actions: [
+            "Ampliação do capital semente",
+            "Democratização via crowdfunding",
+            "Fundos regionais de investimento"
+          ]
         }
       ]
     },
@@ -138,290 +147,378 @@ export const defaultSlides: SlideData[] = [
   {
     id: "slide-4",
     type: "content",
-    title: "Validação e Construção do MVP",
-    subtitle: "Do conceito à primeira versão funcional",
+    title: "Setores em Destaque no Brasil",
+    subtitle: "Onde o investimento privado está concentrado em 2024",
     content: {
-      mvpConcept: {
-        title: "O que é um MVP (Minimum Viable Product)?",
-        definition: "Versão mais simples do produto que permite validar hipóteses fundamentais com menor investimento possível",
-        benefits: [
-          "Reduz tempo de desenvolvimento inicial",
-          "Minimiza riscos e custos",
-          "Permite feedback rápido do mercado",
-          "Facilita iterações baseadas em dados reais"
-        ]
+      introduction: {
+        title: "Distribuição Setorial dos Investimentos",
+        description: "Análise dos segmentos que mais atraem capital e suas características específicas"
       },
-      validationProcess: [
+      topSectors: [
         {
-          step: 1,
-          title: "Definição de Hipóteses",
-          description: "Identificar premissas-chave sobre usuários, problema e solução",
-          deliverables: ["Personas definidas", "Problema validado", "Proposta de valor clara"]
+          sector: "Fintechs",
+          icon: "fas fa-credit-card",
+          color: "blue",
+          percentage: "41,5%",
+          amount: "US$ 889 milhões",
+          description: "Liderança consolidada no ecossistema brasileiro",
+          highlights: [
+            "Nubank: maior fintech da América Latina",
+            "Stone: pagamentos para PMEs", 
+            "C6 Bank: banco digital completo",
+            "Crescimento em open banking e PIX"
+          ],
+          challenges: [
+            "Regulamentação em constante evolução",
+            "Concorrência com bancos tradicionais",
+            "Necessidade de compliance robusto"
+          ]
         },
         {
-          step: 2, 
-          title: "Desenvolvimento do MVP",
-          description: "Criar versão simplificada focada nas funcionalidades essenciais",
-          deliverables: ["Protótipo funcional", "Interface básica", "Funcionalidades core"]
+          sector: "Healthtechs",
+          icon: "fas fa-heartbeat",
+          color: "red",
+          percentage: "16%",
+          amount: "US$ 135,8 milhões",
+          description: "Impulsionadas pela digitalização da saúde pós-pandemia",
+          highlights: [
+            "Telemedicina e consultas remotas",
+            "Gestão hospitalar digitalizada",
+            "Diagnósticos por IA",
+            "Marketplace de saúde"
+          ],
+          challenges: [
+            "Regulamentação do CFM",
+            "Integração com SUS",
+            "Validação clínica necessária"
+          ]
         },
         {
-          step: 3,
-          title: "Testes com Usuários",
-          description: "Colocar o produto nas mãos de usuários reais",
-          deliverables: ["Feedback coletado", "Métricas de uso", "Insights validados"]
-        },
-        {
-          step: 4,
-          title: "Iteração e Melhoria", 
-          description: "Refinar o produto baseado no aprendizado obtido",
-          deliverables: ["Versão aprimorada", "Roadmap atualizado", "Estratégia refinada"]
+          sector: "Agtechs",
+          icon: "fas fa-seedling",
+          color: "green",
+          percentage: "16%",
+          amount: "US$ 119,5 milhões",
+          description: "Aproveitando a força do agronegócio brasileiro",
+          highlights: [
+            "Agricultura de precisão",
+            "Monitoramento por satélite",
+            "Gestão de fazendas",
+            "Marketplace agrícola"
+          ],
+          challenges: [
+            "Conectividade rural limitada",
+            "Resistência à mudança",
+            "Ciclos longos de validação"
+          ]
         }
       ],
-      metrics: [
-        {
-          name: "Taxa de Adoção",
-          description: "Percentual de usuários que continuam usando após primeiro contato",
-          target: "> 20%"
-        },
-        {
-          name: "Net Promoter Score (NPS)",
-          description: "Probabilidade de recomendação do produto",
-          target: "> 50"
-        },
-        {
-          name: "Tempo de Retenção",
-          description: "Período médio que usuários permanecem ativos",
-          target: "> 30 dias"
-        }
-      ],
-      mvpImage: "MVP_validation_process_diagram_0bb6181c.png"
+      emergingSectors: {
+        title: "Setores Emergentes com Potencial",
+        sectors: [
+          {
+            name: "Deep Tech",
+            description: "IA, blockchain, IoT - tecnologias disruptivas",
+            growth: "Crescimento de 85% em 2024"
+          },
+          {
+            name: "Climate Tech",
+            description: "Soluções para sustentabilidade e ESG",
+            growth: "Foco crescente de fundos de impacto"
+          },
+          {
+            name: "Edtechs",
+            description: "Educação digital e corporativa",
+            growth: "Recuperação pós-pandemia"
+          }
+        ]
+      }
     },
     order: 4
   },
   {
     id: "slide-5",
     type: "content",
-    title: "Investidores-Anjo",
-    subtitle: "Mais que capital: mentoria e rede de contatos",
+    title: "Tipos de Investidores no Ecossistema Brasileiro",
+    subtitle: "Perfis, estratégias e performance diferenciadas",
     content: {
-      definition: {
-        title: "Quem são os Investidores-Anjo?",
-        description: "Pessoas físicas com experiência empresarial que investem capital próprio em startups em estágio inicial, oferecendo além de recursos financeiros, mentoria e acesso à sua rede de contatos."
+      introduction: {
+        title: "Análise Baseada em Pesquisa: Venture Perspective of Different Investor Effects",
+        source: "Brazilian Administration Review (BAR), 2024",
+        finding: "Significativas diferenças de performance entre tipos de investidores no Brasil vs EUA"
       },
-      characteristics: [
+      investorTypes: [
         {
-          title: "Perfil Típico",
+          type: "Investidores-Anjo",
           icon: "fas fa-user-tie",
           color: "blue",
-          items: [
-            "Ex-empreendedores bem-sucedidos",
-            "Executivos seniores aposentados",
-            "Profissionais liberais de alto patrimônio", 
-            "Especialistas setoriais com capital disponível"
-          ]
+          performance: "Surpreendentemente Positiva",
+          share: "39,8% dos investimentos",
+          description: "Melhor performance para garantir rodadas futuras",
+          characteristics: [
+            "Ticket médio: R$ 50k - R$ 500k",
+            "Proximidade com empreendedores",
+            "Mentoria baseada em experiência",
+            "Networking setorial específico"
+          ],
+          advantage: "Conhecimento local e proximidade cultural facilitam suporte"
         },
         {
-          title: "Ticket de Investimento",
-          icon: "fas fa-money-bill-wave",
+          type: "Fundos de Venture Capital (IVCs)",
+          icon: "fas fa-building",
           color: "green",
-          items: [
-            "Valores entre R$ 50 mil e R$ 500 mil",
-            "Participação societária de 5% a 20%",
-            "Investimentos múltiplos para diversificar risco",
-            "Follow-on em rodadas posteriores"
-          ]
+          performance: "Positiva apenas para VCs Experientes",
+          share: "3,4% dos investimentos",
+          description: "Presença ainda modesta no seed stage brasileiro",
+          characteristics: [
+            "Ticket médio: R$ 500k - R$ 3M+",
+            "Processo estruturado de due diligence",
+            "Suporte profissional especializado",
+            "Foco em escalabilidade"
+          ],
+          challenge: "Adaptação necessária às particularidades do mercado brasileiro"
         },
         {
-          title: "Valor Agregado",
-          icon: "fas fa-handshake",
+          type: "Corporate Venture Capital (CVC)",
+          icon: "fas fa-building-shield",
           color: "purple",
-          items: [
-            "Mentoria estratégica e operacional",
-            "Acesso à rede de contatos qualificada",
-            "Credibilidade para próximas rodadas",
-            "Experiência prática do mercado"
-          ]
+          performance: "Mista - Boa para M&A, Limitada para Seed",
+          share: "7,2% dos investimentos",
+          description: "Crescimento recente no interesse por startups",
+          characteristics: [
+            "Ticket médio: R$ 1M - R$ 5M",
+            "Sinergia estratégica",
+            "Acesso a recursos corporativos",
+            "Potencial para parcerias"
+          ],
+          challenge: "Objetivos estratégicos podem conflitar com crescimento da startup"
+        },
+        {
+          type: "Aceleradoras",
+          icon: "fas fa-rocket",
+          color: "orange",
+          performance: "Pior Performance (Exceto Altamente Experientes)",
+          share: "13,9% dos investimentos",
+          description: "Modelo ainda em adaptação ao contexto brasileiro",
+          characteristics: [
+            "Ticket: R$ 100k - R$ 300k + programa",
+            "Mentoria intensiva 3-6 meses",
+            "Demo day e exposição",
+            "Rede de alumni"
+          ],
+          challenge: "Necessidade de maior especialização setorial e local"
         }
       ],
-      process: {
-        title: "Como Atrair Investidores-Anjo",
-        steps: [
-          "Networking em eventos especializados",
-          "Participação em grupos de anjos",
-          "Indicações através da rede de contatos",
-          "Apresentação em pitch events",
-          "Due diligence e negociação de termos"
+      keyInsights: {
+        title: "Principais Descobertas da Pesquisa",
+        insights: [
+          "Angels brasileiros superam expectativas internacionais",
+          "IVCs precisam de mais experiência local para ter sucesso",
+          "CVCs focam mais em aquisições que desenvolvimento",
+          "Aceleradoras precisam de mais especialização setorial"
         ]
-      },
-      angelImage: "Angel_investor_mentorship_illustration_8e82fbea.png"
+      }
     },
     order: 5
   },
   {
     id: "slide-6",
-    type: "content", 
-    title: "Capital Semente (Seed)",
-    subtitle: "Estruturando para o crescimento sustentável",
+    type: "chart",
+    title: "Evolução Histórica dos Investimentos em Startups",
+    subtitle: "Dados atualizados do ecossistema brasileiro (2019-2024)",
     content: {
-      seedConcept: {
-        title: "Características do Capital Semente",
-        description: "Modalidade de investimento que ocorre após validação inicial do MVP, visando estruturar a startup para crescimento acelerado e preparação para rodadas maiores.",
-        stage: "Entre MVP validado e Series A"
+      chartData: [
+        { year: "2019", amount: 2.8, deals: 412, context: "Crescimento inicial" },
+        { year: "2020", amount: 3.5, deals: 394, context: "Início da pandemia" },
+        { year: "2021", amount: 9.4, deals: 633, context: "Boom dos investimentos" },
+        { year: "2022", amount: 4.9, deals: 498, context: "Correção de mercado" },
+        { year: "2023", amount: 2.1, deals: 312, context: "Cenário global adverso" },
+        { year: "2024", amount: 13.9, deals: 389, context: "Recuperação brasileira" }
+      ],
+      keyStats: [
+        {
+          title: "R$ 13,9 bilhões",
+          subtitle: "Captados em 2024",
+          change: "+561% vs 2023",
+          color: "green"
+        },
+        {
+          title: "389 rodadas",
+          subtitle: "Realizadas em 2024",
+          change: "+25% vs 2023",
+          color: "green"
+        },
+        {
+          title: "R$ 1,1 milhão",
+          subtitle: "Ticket médio",
+          change: "Estável",
+          color: "blue"
+        },
+        {
+          title: "50%",
+          subtitle: "Dos aportes da América Latina",
+          change: "Liderança regional",
+          color: "purple"
+        }
+      ],
+      successCases: [
+        {
+          name: "Azaas",
+          sector: "Fintech",
+          round: "R$ 820 milhões",
+          description: "Maior rodada de 2024 - gestão financeira para PMEs",
+          color: "blue"
+        },
+        {
+          name: "Tractian", 
+          sector: "Industrial IoT",
+          round: "R$ 700 milhões",
+          description: "Monitoramento industrial com IA",
+          color: "orange"
+        },
+        {
+          name: "Asaas",
+          sector: "Fintech",
+          round: "US$ 150 milhões",
+          description: "Soluções de pagamento para pequenos negócios",
+          color: "green"
+        }
+      ],
+      marketAnalysis: {
+        title: "Análise do Mercado 2024",
+        insights: [
+          "Recuperação robusta após 2 anos de retração",
+          "Concentração em fewer deals but larger tickets",
+          "Inteligência Artificial atrai 42% dos investimentos",
+          "Diversificação setorial além de fintechs"
+        ]
       },
-      investors: [
-        {
-          type: "Fundos Seed",
-          description: "Fundos especializados em early-stage",
-          ticket: "R$ 500k - R$ 3M",
-          focus: "Potencial de crescimento exponencial",
-          examples: "Monashees, Kaszek, Redpoint eventures"
-        },
-        {
-          type: "Corporate Ventures", 
-          description: "Braços de investimento de grandes empresas",
-          ticket: "R$ 1M - R$ 5M",
-          focus: "Sinergia estratégica com core business",
-          examples: "Natura &Co Ventures, Ambev Ventures"
-        },
-        {
-          type: "Super Anjos",
-          description: "Investidores individuais com cheques maiores",
-          ticket: "R$ 250k - R$ 1M", 
-          focus: "Setores de expertise específica",
-          examples: "Founders de unicórnios brasileiros"
-        }
-      ],
-      useCases: [
-        {
-          category: "Estruturação da Equipe",
-          items: [
-            "Contratação de talentos-chave",
-            "Implementação de processos",
-            "Estruturação de áreas funcionais",
-            "Definição de cultura organizacional"
-          ]
-        },
-        {
-          category: "Desenvolvimento do Produto",
-          items: [
-            "Evolução tecnológica da plataforma",
-            "Melhoria da experiência do usuário",
-            "Implementação de novas funcionalidades", 
-            "Infraestrutura para escalabilidade"
-          ]
-        },
-        {
-          category: "Go-to-Market",
-          items: [
-            "Estratégias de marketing digital",
-            "Canais de aquisição de clientes",
-            "Estruturação comercial",
-            "Expansão geográfica inicial"
-          ]
-        }
-      ],
-      milestones: [
-        {
-          metric: "Revenue Run Rate",
-          target: "R$ 1M+ anual",
-          importance: "Prova de tração comercial"
-        },
-        {
-          metric: "Crescimento MoM",
-          target: "15%+ consistente", 
-          importance: "Escalabilidade comprovada"
-        },
-        {
-          metric: "Unit Economics",
-          target: "LTV:CAC > 3:1",
-          importance: "Modelo sustentável"
-        }
-      ]
+      futureOutlook: {
+        title: "Perspectivas 2025",
+        trends: [
+          "Consolidação do mercado em estágios mais maduros",
+          "Maior interesse em deep tech e climate tech", 
+          "Entrada de fundos internacionais no Brasil",
+          "Regulamentação de equity crowdfunding"
+        ]
+      }
     },
     order: 6
   },
   {
     id: "slide-7",
     type: "content",
-    title: "Aceleradoras e Incubadoras", 
-    subtitle: "Ecossistemas de apoio ao empreendedorismo",
+    title: "Inteligência Artificial: O Novo Motor do Ecossistema",
+    subtitle: "Como a IA está transformando o investimento em startups brasileiras",
     content: {
-      definitions: {
-        incubadoras: {
-          title: "Incubadoras",
-          description: "Organizações que apoiam startups em estágio muito inicial, oferecendo infraestrutura, mentoria e recursos básicos para desenvolvimento da ideia.",
-          duration: "12-24 meses",
-          stage: "Ideação até MVP",
-          investment: "Geralmente sem investimento direto"
-        },
-        aceleradoras: {
-          title: "Aceleradoras", 
-          description: "Programas intensivos que aceleram o crescimento de startups já com MVP, oferecendo capital, mentoria intensiva e preparação para próximas rodadas.",
-          duration: "3-6 meses",
-          stage: "MVP até Series A",
-          investment: "R$ 100k - R$ 500k por 5-15% equity"
+      aiOverview: {
+        title: "IA no Ecossistema Brasileiro 2024",
+        stats: {
+          startups: "741 startups aplicam IA",
+          investment: "R$ 5,8 bilhões captados (42% do total)",
+          growth: "Crescimento de 85% em deep tech"
         }
       },
-      topPrograms: [
+      sectorDistribution: [
         {
-          name: "Techstars",
-          type: "Aceleradora Global",
-          focus: "Tecnologia",
-          investment: "$120k por 6% equity",
-          highlights: "Rede global, mentoria intensiva, Demo Day"
+          sector: "Healthtechs",
+          percentage: "16%",
+          applications: [
+            "Diagnósticos por imagem",
+            "Análise de exames laboratoriais",
+            "Telemedicina assistida por IA",
+            "Descoberta de medicamentos"
+          ],
+          color: "red"
         },
         {
-          name: "Rocket Internet",
-          type: "Venture Builder",
-          focus: "E-commerce, Fintech",
-          investment: "Funding + recursos",
-          highlights: "Modelo de construção de startups"
+          sector: "Agtechs", 
+          percentage: "16%",
+          applications: [
+            "Agricultura de precisão",
+            "Previsão de safras",
+            "Detecção de pragas",
+            "Otimização de irrigação"
+          ],
+          color: "green"
         },
         {
-          name: "Porto Seguro Conecta",
-          type: "Corporate Accelerator", 
-          focus: "Insurtech, Mobilidade",
-          investment: "R$ 200k + parcerias",
-          highlights: "Acesso ao ecossistema Porto"
+          sector: "Retailtechs",
+          percentage: "14%",
+          applications: [
+            "Recomendação personalizada",
+            "Gestão de estoque",
+            "Previsão de demanda",
+            "Chatbots inteligentes"
+          ],
+          color: "blue"
         },
         {
-          name: "InovAtiva Brasil",
-          type: "Programa Governamental",
-          focus: "Diversos setores",
-          investment: "Capacitação + networking",
-          highlights: "Apoio do SEBRAE e MDIC"
+          sector: "Fintechs",
+          percentage: "10%",
+          applications: [
+            "Análise de crédito",
+            "Detecção de fraudes", 
+            "Investimentos automatizados",
+            "Atendimento ao cliente"
+          ],
+          color: "purple"
         }
       ],
-      benefits: [
-        {
-          category: "Acesso a Capital",
-          items: [
-            "Investimento inicial para desenvolvimento",
-            "Preparação para rodadas futuras", 
-            "Conexão com investidores qualificados",
-            "Melhoria na valorização da empresa"
-          ]
-        },
-        {
-          category: "Mentoria Especializada",
-          items: [
-            "Empreendedores experientes",
-            "Especialistas setoriais",
-            "Executivos de grandes empresas",
-            "Investidores e fundadores de sucesso"
-          ]
-        },
-        {
-          category: "Networking e Parcerias",
-          items: [
-            "Rede de alumni das aceleradoras",
-            "Parcerias estratégicas com corporações",
-            "Conexões com potenciais clientes",
-            "Relacionamento com ecossistema de inovação"
-          ]
-        }
-      ],
-      acceleratorImage: "Accelerator_incubator_ecosystem_building_e1c49f25.png"
+      challenges: {
+        title: "Desafios para Startups de IA no Brasil",
+        items: [
+          {
+            challenge: "Talento Especializado",
+            description: "Escassez de profissionais qualificados em machine learning",
+            impact: "Alto"
+          },
+          {
+            challenge: "Infraestrutura Computacional",
+            description: "Custos elevados de cloud computing e GPUs",
+            impact: "Médio"
+          },
+          {
+            challenge: "Dados de Qualidade",
+            description: "Acesso limitado a datasets grandes e limpos",
+            impact: "Alto"
+          },
+          {
+            challenge: "Regulamentação",
+            description: "Marco legal ainda em desenvolvimento",
+            impact: "Médio"
+          }
+        ]
+      },
+      opportunities: {
+        title: "Oportunidades Emergentes",
+        areas: [
+          {
+            area: "IA Generativa",
+            description: "Aplicações em conteúdo, código e design",
+            potential: "Muito Alto"
+          },
+          {
+            area: "Edge Computing + IA",
+            description: "Processamento local para IoT e mobile",
+            potential: "Alto"
+          },
+          {
+            area: "IA Explicável",
+            description: "Transparência em decisões algorítmicas",
+            potential: "Médio"
+          }
+        ]
+      },
+      investorPerspective: {
+        title: "Visão dos Investidores",
+        insights: [
+          "Preferência por startups com diferencial técnico real",
+          "Foco em problemas específicos vs soluções genéricas",
+          "Valorização de equipes com PhDs e experiência",
+          "Due diligence técnica mais rigorosa"
+        ]
+      }
     },
     order: 7
   },
