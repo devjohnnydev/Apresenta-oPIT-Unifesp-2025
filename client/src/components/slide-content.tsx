@@ -63,6 +63,20 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
     onUpdateSlide(updatedSlide);
   };
 
+  const handlePhotoChange = (memberIndex: number, photoUrl: string) => {
+    const updatedSlide = { ...slide };
+    const updatedTeamMembers = [...(updatedSlide.content.teamMembers || [])];
+    updatedTeamMembers[memberIndex] = {
+      ...updatedTeamMembers[memberIndex],
+      photo: photoUrl
+    };
+    updatedSlide.content = {
+      ...updatedSlide.content,
+      teamMembers: updatedTeamMembers
+    };
+    onUpdateSlide(updatedSlide);
+  };
+
   const EditableText = ({ 
     children, 
     field, 
@@ -180,20 +194,53 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
                       >
                         {/* Photo/Avatar */}
                         <motion.div 
-                          className="w-20 h-20 lg:w-24 lg:h-24 bg-gradient-to-br from-primary to-purple-600 rounded-full flex items-center justify-center mb-4 shadow-lg overflow-hidden border-4 border-white dark:border-gray-700"
+                          className="relative w-20 h-20 lg:w-24 lg:h-24 bg-gradient-to-br from-primary to-purple-600 rounded-full flex items-center justify-center mb-4 shadow-lg overflow-hidden border-4 border-white dark:border-gray-700 cursor-pointer group"
                           whileHover={{ scale: 1.1 }}
                           transition={{ duration: 0.3 }}
+                          onClick={() => {
+                            if (isEditMode) {
+                              const input = document.createElement('input');
+                              input.type = 'file';
+                              input.accept = 'image/*';
+                              input.onchange = (e) => {
+                                const file = (e.target as HTMLInputElement)?.files?.[0];
+                                if (file) {
+                                  const reader = new FileReader();
+                                  reader.onload = (event) => {
+                                    const result = event.target?.result as string;
+                                    handlePhotoChange(index, result);
+                                  };
+                                  reader.readAsDataURL(file);
+                                }
+                              };
+                              input.click();
+                            }
+                          }}
                         >
                           {member.photo ? (
-                            <img 
-                              src={member.photo} 
-                              alt={member.name}
-                              className="w-full h-full object-cover"
-                            />
+                            <>
+                              <img 
+                                src={member.photo} 
+                                alt={member.name}
+                                className="w-full h-full object-cover"
+                              />
+                              {isEditMode && (
+                                <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                                  <span className="text-white text-xs">Alterar foto</span>
+                                </div>
+                              )}
+                            </>
                           ) : (
-                            <span className="text-2xl lg:text-3xl font-bold text-white">
-                              {member.name.split(' ').map((n: string) => n[0]).join('')}
-                            </span>
+                            <>
+                              <span className="text-2xl lg:text-3xl font-bold text-white">
+                                {member.name.split(' ').map((n: string) => n[0]).join('')}
+                              </span>
+                              {isEditMode && (
+                                <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                                  <span className="text-white text-xs">Adicionar foto</span>
+                                </div>
+                              )}
+                            </>
                           )}
                         </motion.div>
                         

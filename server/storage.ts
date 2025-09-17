@@ -37,27 +37,32 @@ export class MemStorage implements IStorage {
             {
               name: "Johnny Braga de Oliveira",
               role: "Coordenador do Projeto",
-              ra: "123456789"
+              ra: "123456789",
+              photo: null
             },
             {
               name: "Maria Silva Santos",
               role: "Analista de Mercado",
-              ra: "987654321"
+              ra: "987654321",
+              photo: null
             },
             {
               name: "Carlos Eduardo Lima",
               role: "Especialista em Finanças",
-              ra: "456789123"
+              ra: "456789123",
+              photo: null
             },
             {
               name: "Ana Paula Costa",
               role: "Gestora de Inovação",
-              ra: "321654987"
+              ra: "321654987",
+              photo: null
             },
             {
               name: "Roberto Fernandes",
               role: "Consultor Estratégico",
-              ra: "789123456"
+              ra: "789123456",
+              photo: null
             }
           ]
         },
