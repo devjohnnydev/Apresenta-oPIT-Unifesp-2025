@@ -117,6 +117,22 @@
 
   .fullscreen-mode {
     @apply fixed inset-0 z-50 bg-background;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .slide-content-wrapper {
+    @apply w-full h-full flex flex-col justify-center items-center;
+    min-height: calc(100vh - 80px); /* Account for controls */
+    padding: 2rem;
+  }
+
+  .slide-content-fullscreen {
+    @apply w-full max-w-7xl mx-auto;
+    height: calc(100vh - 160px); /* Account for controls and padding */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }
 

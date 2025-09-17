@@ -6,6 +6,13 @@ import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import type { SlideData } from "@shared/schema";
 
+// Import generated images
+import teamBgImage from "@assets/generated_images/Team_presentation_academic_background_9df5e1d2.png";
+import ecosystemImage from "@assets/generated_images/Startup_investment_ecosystem_diagram_b4dc1768.png";
+import angelImage from "@assets/generated_images/Angel_investor_mentorship_illustration_8e82fbea.png";
+import mvpImage from "@assets/generated_images/MVP_validation_process_diagram_0bb6181c.png";
+import acceleratorImage from "@assets/generated_images/Accelerator_incubator_ecosystem_building_e1c49f25.png";
+
 interface SlideContentProps {
   slide: SlideData;
   isEditMode: boolean;
@@ -60,6 +67,68 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
   const renderSlideContent = () => {
     switch (slide.type) {
       case "intro":
+        // First slide - Team presentation
+        if (slide.content.presentationInfo && slide.content.teamMembers) {
+          return (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="h-full flex flex-col justify-center space-y-8"
+            >
+              {/* Title and subtitle */}
+              <div className="text-center mb-8">
+                <EditableText field="title" className="text-5xl font-bold text-primary mb-4">
+                  {slide.title}
+                </EditableText>
+                <EditableText field="subtitle" className="text-xl text-muted-foreground mb-6">
+                  {slide.subtitle}
+                </EditableText>
+                
+                {/* Presentation Info */}
+                <div className="bg-card rounded-lg p-6 mb-8 shadow-sm">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                    <div><strong>Curso:</strong> {slide.content.presentationInfo.course}</div>
+                    <div><strong>Professor:</strong> {slide.content.presentationInfo.professor}</div>
+                    <div><strong>Semestre:</strong> {slide.content.presentationInfo.semester}</div>
+                    <div><strong>Duração:</strong> {slide.content.presentationInfo.duration}</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Team Members */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+                {slide.content.teamMembers.map((member: any, index: number) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <Card className="p-4 text-center hover:shadow-md transition-shadow">
+                      <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <span className="text-2xl font-bold text-primary">
+                          {member.name.split(' ').map((n: string) => n[0]).join('')}
+                        </span>
+                      </div>
+                      <h4 className="font-semibold text-sm mb-1" data-testid={`member-name-${index}`}>
+                        {member.name}
+                      </h4>
+                      <p className="text-xs text-muted-foreground mb-1" data-testid={`member-role-${index}`}>
+                        {member.role}
+                      </p>
+                      <p className="text-xs text-muted-foreground" data-testid={`member-ra-${index}`}>
+                        RA: {member.ra}
+                      </p>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          );
+        }
+        
+        // Other intro slides
         return (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -76,7 +145,18 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
               </EditableText>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Ecosystem image for overview slide */}
+            {slide.content.ecosystemImage && (
+              <div className="mb-8 flex justify-center">
+                <img 
+                  src={ecosystemImage} 
+                  alt="Ecossistema de Investimento" 
+                  className="max-w-full max-h-64 object-contain rounded-lg shadow-md"
+                />
+              </div>
+            )}
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {slide.content.sections?.map((section: any, index: number) => (
                 <motion.div
                   key={index}
@@ -129,6 +209,377 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
                 {slide.subtitle}
               </EditableText>
             </div>
+
+            {/* Phases content (Impulso Inicial) */}
+            {slide.content.phases && (
+              <div className="space-y-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {slide.content.phases.map((phase: any, index: number) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.2 }}
+                    >
+                      <Card className="h-full hover:shadow-md transition-shadow">
+                        <CardContent className="p-6">
+                          <div className="flex items-center gap-3 mb-4">
+                            <div className={cn(
+                              "w-12 h-12 rounded-lg flex items-center justify-center",
+                              colorClasses[phase.color as keyof typeof colorClasses] || colorClasses.primary
+                            )}>
+                              <i className={phase.icon}></i>
+                            </div>
+                            <h3 className="text-xl font-semibold" data-testid={`phase-title-${index}`}>
+                              {phase.title}
+                            </h3>
+                          </div>
+                          <p className="text-sm text-muted-foreground mb-4" data-testid={`phase-description-${index}`}>
+                            {phase.description}
+                          </p>
+                          <ul className="space-y-2 text-sm">
+                            {phase.keyPoints?.map((point: string, pointIndex: number) => (
+                              <li key={pointIndex} className="flex items-start gap-2" data-testid={`phase-point-${index}-${pointIndex}`}>
+                                <i className="fas fa-check text-green-600 mt-0.5"></i>
+                                <span>{point}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  ))}
+                </div>
+                
+                {slide.content.challenges && (
+                  <div className="mt-8">
+                    <h3 className="text-2xl font-semibold mb-6">Principais Desafios</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      {slide.content.challenges.map((challenge: any, index: number) => (
+                        <Card key={index} className={cn("p-4 border-l-4", 
+                          challenge.color === 'red' && "border-l-red-500 bg-red-50",
+                          challenge.color === 'orange' && "border-l-orange-500 bg-orange-50",
+                          challenge.color === 'yellow' && "border-l-yellow-500 bg-yellow-50"
+                        )}>
+                          <h4 className="font-semibold mb-2" data-testid={`challenge-title-${index}`}>
+                            {challenge.title}
+                          </h4>
+                          <p className="text-sm text-muted-foreground" data-testid={`challenge-description-${index}`}>
+                            {challenge.description}
+                          </p>
+                        </Card>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* MVP content */}
+            {slide.content.mvpConcept && (
+              <div className="space-y-8">
+                {/* MVP Definition */}
+                <Card className="p-6 bg-gradient-to-r from-blue-50 to-green-50 border border-blue-200">
+                  <h3 className="text-2xl font-semibold mb-4 flex items-center gap-2">
+                    <i className="fas fa-lightbulb text-primary"></i>
+                    {slide.content.mvpConcept.title}
+                  </h3>
+                  <p className="text-lg mb-6">{slide.content.mvpConcept.definition}</p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {slide.content.mvpConcept.benefits?.map((benefit: string, index: number) => (
+                      <div key={index} className="flex items-start gap-2">
+                        <i className="fas fa-check-circle text-green-600 mt-1"></i>
+                        <span className="text-sm">{benefit}</span>
+                      </div>
+                    ))}
+                  </div>
+                </Card>
+
+                {/* MVP Process */}
+                {slide.content.validationProcess && (
+                  <div>
+                    <h3 className="text-2xl font-semibold mb-6">Processo de Validação</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                      {slide.content.validationProcess.map((step: any, index: number) => (
+                        <Card key={index} className="p-4 text-center">
+                          <div className="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-3 text-xl font-bold">
+                            {step.step}
+                          </div>
+                          <h4 className="font-semibold mb-2" data-testid={`step-title-${index}`}>
+                            {step.title}
+                          </h4>
+                          <p className="text-sm text-muted-foreground mb-3" data-testid={`step-description-${index}`}>
+                            {step.description}
+                          </p>
+                          <div className="space-y-1">
+                            {step.deliverables?.map((deliverable: string, delIndex: number) => (
+                              <div key={delIndex} className="text-xs bg-gray-100 px-2 py-1 rounded">
+                                {deliverable}
+                              </div>
+                            ))}
+                          </div>
+                        </Card>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* MVP Image */}
+                {slide.content.mvpImage && (
+                  <div className="flex justify-center mt-8">
+                    <img 
+                      src={mvpImage} 
+                      alt="Processo de Validação MVP" 
+                      className="max-w-full max-h-64 object-contain rounded-lg shadow-md"
+                    />
+                  </div>
+                )}
+
+                {/* Metrics */}
+                {slide.content.metrics && (
+                  <div>
+                    <h3 className="text-2xl font-semibold mb-6">Métricas de Sucesso</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      {slide.content.metrics.map((metric: any, index: number) => (
+                        <Card key={index} className="p-6 text-center">
+                          <div className="text-3xl font-bold text-primary mb-2">{metric.target}</div>
+                          <h4 className="font-semibold mb-2">{metric.name}</h4>
+                          <p className="text-sm text-muted-foreground">{metric.description}</p>
+                        </Card>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Angel Investor content */}
+            {slide.content.definition && slide.content.characteristics && (
+              <div className="space-y-8">
+                {/* Definition */}
+                <Card className="p-6 bg-gradient-to-r from-purple-50 to-blue-50 border border-purple-200">
+                  <h3 className="text-2xl font-semibold mb-4">{slide.content.definition.title}</h3>
+                  <p className="text-lg">{slide.content.definition.description}</p>
+                </Card>
+
+                {/* Characteristics */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {slide.content.characteristics.map((char: any, index: number) => (
+                    <Card key={index} className="p-6">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className={cn(
+                          "w-12 h-12 rounded-lg flex items-center justify-center",
+                          colorClasses[char.color as keyof typeof colorClasses] || colorClasses.primary
+                        )}>
+                          <i className={char.icon}></i>
+                        </div>
+                        <h4 className="text-xl font-semibold">{char.title}</h4>
+                      </div>
+                      <ul className="space-y-2 text-sm">
+                        {char.items?.map((item: string, itemIndex: number) => (
+                          <li key={itemIndex} className="flex items-start gap-2">
+                            <i className="fas fa-chevron-right text-primary mt-1 text-xs"></i>
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </Card>
+                  ))}
+                </div>
+
+                {/* Process */}
+                {slide.content.process && (
+                  <Card className="p-6">
+                    <h3 className="text-xl font-semibold mb-4">{slide.content.process.title}</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+                      {slide.content.process.steps?.map((step: string, index: number) => (
+                        <div key={index} className="text-center">
+                          <div className="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-2 text-sm font-bold">
+                            {index + 1}
+                          </div>
+                          <p className="text-sm">{step}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </Card>
+                )}
+
+                {/* Angel Image */}
+                {slide.content.angelImage && (
+                  <div className="flex justify-center mt-8">
+                    <img 
+                      src={angelImage} 
+                      alt="Investidores Anjo" 
+                      className="max-w-full max-h-64 object-contain rounded-lg shadow-md"
+                    />
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Seed Capital content */}
+            {slide.content.seedConcept && (
+              <div className="space-y-8">
+                {/* Seed Concept */}
+                <Card className="p-6 bg-gradient-to-r from-green-50 to-blue-50 border border-green-200">
+                  <h3 className="text-2xl font-semibold mb-4">{slide.content.seedConcept.title}</h3>
+                  <p className="text-lg mb-4">{slide.content.seedConcept.description}</p>
+                  <Badge variant="outline" className="text-sm">
+                    <i className="fas fa-seedling mr-2"></i>
+                    {slide.content.seedConcept.stage}
+                  </Badge>
+                </Card>
+
+                {/* Investors */}
+                {slide.content.investors && (
+                  <div>
+                    <h3 className="text-2xl font-semibold mb-6">Tipos de Investidores</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      {slide.content.investors.map((investor: any, index: number) => (
+                        <Card key={index} className="p-6">
+                          <h4 className="text-xl font-semibold mb-3 text-primary">{investor.type}</h4>
+                          <p className="text-sm text-muted-foreground mb-4">{investor.description}</p>
+                          <div className="space-y-2 text-sm">
+                            <div><strong>Ticket:</strong> {investor.ticket}</div>
+                            <div><strong>Foco:</strong> {investor.focus}</div>
+                            <div className="text-xs text-muted-foreground">
+                              <strong>Exemplos:</strong> {investor.examples}
+                            </div>
+                          </div>
+                        </Card>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Use Cases */}
+                {slide.content.useCases && (
+                  <div>
+                    <h3 className="text-2xl font-semibold mb-6">Aplicação dos Recursos</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      {slide.content.useCases.map((useCase: any, index: number) => (
+                        <Card key={index} className="p-6">
+                          <h4 className="text-lg font-semibold mb-4 text-primary">{useCase.category}</h4>
+                          <ul className="space-y-2 text-sm">
+                            {useCase.items?.map((item: string, itemIndex: number) => (
+                              <li key={itemIndex} className="flex items-start gap-2">
+                                <i className="fas fa-check text-green-600 mt-1 text-xs"></i>
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </Card>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Milestones */}
+                {slide.content.milestones && (
+                  <div>
+                    <h3 className="text-2xl font-semibold mb-6">Marcos Importantes</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      {slide.content.milestones.map((milestone: any, index: number) => (
+                        <Card key={index} className="p-6 text-center bg-gradient-to-br from-blue-50 to-green-50">
+                          <div className="text-2xl font-bold text-primary mb-2">{milestone.target}</div>
+                          <h4 className="font-semibold mb-2">{milestone.metric}</h4>
+                          <p className="text-sm text-muted-foreground">{milestone.importance}</p>
+                        </Card>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Accelerators content */}
+            {slide.content.definitions && (
+              <div className="space-y-8">
+                {/* Definitions comparison */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <Card className="p-6 bg-gradient-to-br from-blue-50 to-blue-100">
+                    <h3 className="text-2xl font-semibold mb-4 text-blue-800">
+                      <i className="fas fa-seedling mr-2"></i>
+                      {slide.content.definitions.incubadoras.title}
+                    </h3>
+                    <p className="text-blue-700 mb-4">{slide.content.definitions.incubadoras.description}</p>
+                    <div className="space-y-2 text-sm text-blue-600">
+                      <div><strong>Duração:</strong> {slide.content.definitions.incubadoras.duration}</div>
+                      <div><strong>Estágio:</strong> {slide.content.definitions.incubadoras.stage}</div>
+                      <div><strong>Investimento:</strong> {slide.content.definitions.incubadoras.investment}</div>
+                    </div>
+                  </Card>
+
+                  <Card className="p-6 bg-gradient-to-br from-green-50 to-green-100">
+                    <h3 className="text-2xl font-semibold mb-4 text-green-800">
+                      <i className="fas fa-rocket mr-2"></i>
+                      {slide.content.definitions.aceleradoras.title}
+                    </h3>
+                    <p className="text-green-700 mb-4">{slide.content.definitions.aceleradoras.description}</p>
+                    <div className="space-y-2 text-sm text-green-600">
+                      <div><strong>Duração:</strong> {slide.content.definitions.aceleradoras.duration}</div>
+                      <div><strong>Estágio:</strong> {slide.content.definitions.aceleradoras.stage}</div>
+                      <div><strong>Investimento:</strong> {slide.content.definitions.aceleradoras.investment}</div>
+                    </div>
+                  </Card>
+                </div>
+
+                {/* Top Programs */}
+                {slide.content.topPrograms && (
+                  <div>
+                    <h3 className="text-2xl font-semibold mb-6">Principais Programas no Brasil</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      {slide.content.topPrograms.map((program: any, index: number) => (
+                        <Card key={index} className="p-6">
+                          <div className="flex items-start justify-between mb-3">
+                            <h4 className="text-xl font-semibold text-primary">{program.name}</h4>
+                            <Badge variant="outline">{program.type}</Badge>
+                          </div>
+                          <div className="space-y-2 text-sm mb-4">
+                            <div><strong>Foco:</strong> {program.focus}</div>
+                            <div><strong>Investimento:</strong> {program.investment}</div>
+                            <div><strong>Destaque:</strong> {program.highlights}</div>
+                          </div>
+                        </Card>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Benefits */}
+                {slide.content.benefits && (
+                  <div>
+                    <h3 className="text-2xl font-semibold mb-6">Benefícios dos Programas</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                      {slide.content.benefits.map((benefit: any, index: number) => (
+                        <Card key={index} className="p-6">
+                          <h4 className="text-lg font-semibold mb-4 text-primary">{benefit.category}</h4>
+                          <ul className="space-y-2 text-sm">
+                            {benefit.items?.map((item: string, itemIndex: number) => (
+                              <li key={itemIndex} className="flex items-start gap-2">
+                                <i className="fas fa-star text-yellow-500 mt-1 text-xs"></i>
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </Card>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Accelerator Image */}
+                {slide.content.acceleratorImage && (
+                  <div className="flex justify-center mt-8">
+                    <img 
+                      src={acceleratorImage} 
+                      alt="Ecossistema de Aceleradoras e Incubadoras" 
+                      className="max-w-full max-h-64 object-contain rounded-lg shadow-md"
+                    />
+                  </div>
+                )}
+              </div>
+            )}
 
             {slide.content.challenges && slide.content.opportunities && (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -313,6 +764,100 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
                   </div>
                 )}
               </div>
+            )}
+          </motion.div>
+        );
+
+      case "conclusion":
+        return (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="space-y-8"
+          >
+            <div className="mb-8">
+              <EditableText field="title" className="text-4xl font-bold text-primary mb-4">
+                {slide.title}
+              </EditableText>
+              <EditableText field="subtitle" className="text-lg text-muted-foreground">
+                {slide.subtitle}
+              </EditableText>
+            </div>
+
+            {/* Key Takeaways */}
+            {slide.content.keyTakeaways && (
+              <div className="space-y-6">
+                <h3 className="text-2xl font-semibold">Principais Aprendizados</h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {slide.content.keyTakeaways.map((takeaway: any, index: number) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                    >
+                      <Card className="p-6 h-full bg-gradient-to-br from-blue-50 to-purple-50 border border-blue-200">
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                            <i className={takeaway.icon + " text-primary"}></i>
+                          </div>
+                          <h4 className="font-semibold text-lg" data-testid={`takeaway-title-${index}`}>
+                            {takeaway.title}
+                          </h4>
+                        </div>
+                        <p className="text-sm text-muted-foreground" data-testid={`takeaway-description-${index}`}>
+                          {takeaway.description}
+                        </p>
+                      </Card>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Future Trends */}
+            {slide.content.futureTrends && (
+              <div className="space-y-6">
+                <h3 className="text-2xl font-semibold">Tendências Futuras</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {slide.content.futureTrends.map((trend: any, index: number) => (
+                    <Card key={index} className="p-6 border-l-4 border-l-green-500">
+                      <div className="flex items-start gap-3">
+                        <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <i className="fas fa-trending-up text-green-600"></i>
+                        </div>
+                        <div>
+                          <h4 className="font-semibold text-lg mb-2" data-testid={`trend-title-${index}`}>
+                            {trend.trend}
+                          </h4>
+                          <p className="text-sm text-muted-foreground" data-testid={`trend-description-${index}`}>
+                            {trend.description}
+                          </p>
+                        </div>
+                      </div>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Call to Action */}
+            {slide.content.callToAction && (
+              <Card className="p-6 bg-gradient-to-r from-primary/5 to-primary/10 border border-primary/20">
+                <h3 className="text-2xl font-semibold mb-4 text-primary">
+                  <i className="fas fa-arrow-right mr-2"></i>
+                  {slide.content.callToAction.title}
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {slide.content.callToAction.actions?.map((action: string, index: number) => (
+                    <div key={index} className="flex items-start gap-3">
+                      <i className="fas fa-check-circle text-primary mt-1"></i>
+                      <span className="text-sm">{action}</span>
+                    </div>
+                  ))}
+                </div>
+              </Card>
             )}
           </motion.div>
         );
@@ -524,93 +1069,6 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
           </motion.div>
         );
 
-      case "conclusion":
-        return (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="space-y-8"
-          >
-            <div className="mb-8">
-              <EditableText field="title" className="text-4xl font-bold text-primary mb-4">
-                {slide.title}
-              </EditableText>
-              <EditableText field="subtitle" className="text-lg text-muted-foreground">
-                {slide.subtitle}
-              </EditableText>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="space-y-6">
-                <h2 className="text-2xl font-semibold">
-                  Síntese dos Aprendizados
-                </h2>
-                
-                <div className="space-y-4">
-                  {slide.content.learnings?.map((learning: any, index: number) => (
-                    <Card key={index} className={cn(
-                      "p-6 border",
-                      colorClasses[learning.color as keyof typeof colorClasses]
-                    )}>
-                      <div className="flex items-start gap-3">
-                        <i className="fas fa-lightbulb mt-1"></i>
-                        <div>
-                          <h3 className="font-semibold mb-2" data-testid={`learning-title-${index}`}>
-                            {learning.title}
-                          </h3>
-                          <p className="text-sm" data-testid={`learning-description-${index}`}>
-                            {learning.description}
-                          </p>
-                        </div>
-                      </div>
-                    </Card>
-                  ))}
-                </div>
-
-                {slide.content.futurePerspective && (
-                  <Card className="p-6">
-                    <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                      <i className="fas fa-telescope text-primary"></i>
-                      Perspectivas Futuras
-                    </h3>
-                    <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-4 rounded-lg">
-                      <p className="text-sm text-blue-800" data-testid="future-perspective">
-                        {slide.content.futurePerspective}
-                      </p>
-                    </div>
-                  </Card>
-                )}
-              </div>
-
-              <div className="space-y-6">
-                <h2 className="text-2xl font-semibold">
-                  Recomendações para Startups
-                </h2>
-                
-                <div className="space-y-4">
-                  {slide.content.recommendations?.map((recommendation: any, index: number) => (
-                    <Card key={index} className="p-6">
-                      <div className="flex items-start gap-3">
-                        <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                          <i className={recommendation.icon}></i>
-                        </div>
-                        <div>
-                          <h3 className="font-semibold mb-2" data-testid={`recommendation-title-${index}`}>
-                            {recommendation.title}
-                          </h3>
-                          <p className="text-sm text-muted-foreground" data-testid={`recommendation-description-${index}`}>
-                            {recommendation.description}
-                          </p>
-                        </div>
-                      </div>
-                    </Card>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        );
 
       case "references":
         return (
@@ -629,43 +1087,120 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
               </EditableText>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {slide.content.categories?.map((category: any, categoryIndex: number) => (
-                <Card key={categoryIndex} className="p-6">
-                  <h3 className="text-lg font-semibold mb-4 flex items-center gap-2" data-testid={`reference-category-${categoryIndex}`}>
-                    <i className={`${category.icon} text-${category.color}-600`}></i>
-                    {category.title}
-                  </h3>
-                  <div className="space-y-4 text-sm">
-                    {category.references?.map((reference: any, refIndex: number) => (
-                      <div key={refIndex} className={cn(
-                        "border-l-4 pl-4",
-                        `border-l-${reference.color}-500`
-                      )}>
-                        <p className="font-semibold" data-testid={`reference-title-${categoryIndex}-${refIndex}`}>
-                          {reference.title}
+            {/* Academic References */}
+            {slide.content.academicReferences && (
+              <div className="space-y-6">
+                <h3 className="text-2xl font-semibold mb-4">
+                  <i className="fas fa-graduation-cap mr-2 text-blue-600"></i>
+                  Referências Acadêmicas
+                </h3>
+                <div className="space-y-4">
+                  {slide.content.academicReferences.map((ref: any, index: number) => (
+                    <Card key={index} className="p-4 border-l-4 border-l-blue-500">
+                      <div className="text-sm">
+                        <p className="font-semibold mb-2">
+                          {ref.authors} ({ref.year}). 
+                          <a href={ref.url} target="_blank" rel="noopener noreferrer" 
+                             className="text-primary hover:underline">
+                            {ref.title}
+                          </a>
                         </p>
-                        <p className="text-muted-foreground" data-testid={`reference-description-${categoryIndex}-${refIndex}`}>
-                          {reference.description}
+                        <p className="text-muted-foreground">
+                          {ref.publisher}.
                         </p>
-                        <p className={`text-xs text-${reference.color}-600`} data-testid={`reference-url-${categoryIndex}-${refIndex}`}>
-                          {reference.url}
+                        {ref.journal && (
+                          <p className="text-muted-foreground italic">
+                            {ref.journal}
+                          </p>
+                        )}
+                      </div>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Industry Reports */}
+            {slide.content.industryReports && (
+              <div className="space-y-6">
+                <h3 className="text-2xl font-semibold mb-4">
+                  <i className="fas fa-chart-bar mr-2 text-green-600"></i>
+                  Relatórios Setoriais
+                </h3>
+                <div className="space-y-4">
+                  {slide.content.industryReports.map((report: any, index: number) => (
+                    <Card key={index} className="p-4 border-l-4 border-l-green-500">
+                      <div className="text-sm">
+                        <p className="font-semibold mb-2">
+                          <a href={report.url} target="_blank" rel="noopener noreferrer" 
+                             className="text-primary hover:underline">
+                            {report.title}
+                          </a>
+                        </p>
+                        <p className="text-muted-foreground mb-1">
+                          <strong>{report.organization}</strong>
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          Acessado em: {report.accessDate}
                         </p>
                       </div>
-                    ))}
-                  </div>
-                </Card>
-              ))}
-            </div>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+            )}
 
-            {slide.content.footer && (
-              <div className="mt-8 p-6 bg-muted rounded-lg border border-border text-center">
-                <p className="text-sm text-muted-foreground" data-testid="reference-footer-created">
-                  {slide.content.footer.created} | {slide.content.footer.event}
-                </p>
-                <p className="text-xs text-muted-foreground mt-2" data-testid="reference-footer-theme">
-                  {slide.content.footer.theme}
-                </p>
+            {/* Data Sources */}
+            {slide.content.dataSource && (
+              <div className="space-y-6">
+                <h3 className="text-2xl font-semibold mb-4">
+                  <i className="fas fa-database mr-2 text-purple-600"></i>
+                  Fontes de Dados
+                </h3>
+                <div className="space-y-4">
+                  {slide.content.dataSource.map((source: any, index: number) => (
+                    <Card key={index} className="p-4 border-l-4 border-l-purple-500">
+                      <div className="text-sm">
+                        <p className="font-semibold mb-2">
+                          <a href={source.url} target="_blank" rel="noopener noreferrer" 
+                             className="text-primary hover:underline">
+                            {source.source}
+                          </a>
+                        </p>
+                        <p className="text-muted-foreground">
+                          {source.description}
+                        </p>
+                      </div>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Additional Resources */}
+            {slide.content.additionalResources && (
+              <div className="space-y-6">
+                <h3 className="text-2xl font-semibold mb-4">
+                  <i className="fas fa-link mr-2 text-orange-600"></i>
+                  Recursos Adicionais
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {slide.content.additionalResources.map((resource: any, index: number) => (
+                    <Card key={index} className="p-4 hover:shadow-md transition-shadow">
+                      <div className="text-sm">
+                        <p className="font-semibold mb-2">
+                          <a href={resource.url} target="_blank" rel="noopener noreferrer" 
+                             className="text-primary hover:underline">
+                            {resource.title}
+                          </a>
+                        </p>
+                        <p className="text-muted-foreground text-xs">
+                          {resource.description}
+                        </p>
+                      </div>
+                    </Card>
+                  ))}
+                </div>
               </div>
             )}
           </motion.div>

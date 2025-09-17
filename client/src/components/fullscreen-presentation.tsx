@@ -31,14 +31,15 @@ export function FullscreenPresentation({
       data-testid="fullscreen-presentation"
     >
       {/* Content Area */}
-      <div className="flex-1 flex items-center justify-center p-8">
-        <div className="max-w-6xl w-full">
+      <div className="flex-1 slide-content-wrapper">
+        <div className="slide-content-fullscreen">
           <motion.div
             key={currentSlide}
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -50 }}
             transition={{ duration: 0.3 }}
+            className="h-full w-full flex flex-col justify-center"
           >
             <SlideContent
               slide={currentSlideData}
