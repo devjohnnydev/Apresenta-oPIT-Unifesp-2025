@@ -12,6 +12,8 @@ import ecosystemImage from "@assets/generated_images/Startup_investment_ecosyste
 import angelImage from "@assets/generated_images/Angel_investor_mentorship_illustration_8e82fbea.png";
 import mvpImage from "@assets/generated_images/MVP_validation_process_diagram_0bb6181c.png";
 import acceleratorImage from "@assets/generated_images/Accelerator_incubator_ecosystem_building_e1c49f25.png";
+import techInnovationImage from "@assets/generated_images/3D_tech_innovation_illustration_362afb7d.png";
+import teamCollabImage from "@assets/generated_images/3D_team_collaboration_holographic_ba6ee29f.png";
 
 interface SlideContentProps {
   slide: SlideData;
@@ -91,93 +93,155 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
         if (slide.content.presentationInfo && slide.content.teamMembers) {
           return (
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="h-full flex flex-col justify-center space-y-8"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="h-full flex flex-col justify-between py-4 px-2 overflow-hidden"
+              style={{
+                backgroundImage: `linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 51, 234, 0.1) 100%)`,
+                minHeight: "100vh"
+              }}
             >
-              {/* Title and subtitle */}
-              <div className="text-center mb-8">
-                <EditableText field="title" className="text-5xl font-bold text-primary mb-4">
-                  {slide.title}
-                </EditableText>
-                <EditableText field="subtitle" className="text-xl text-muted-foreground mb-6">
-                  {slide.subtitle}
-                </EditableText>
-                
-                {/* Presentation Info */}
-                <div className="bg-card rounded-lg p-6 mb-8 shadow-sm">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                    <div data-testid="presentation-course">
-                      <strong>Curso:</strong>{" "}
-                      <EditableText field="presentationInfo.course" className="inline-block min-w-[200px]">
-                        {slide.content.presentationInfo.course}
-                      </EditableText>
-                    </div>
-                    <div data-testid="presentation-professor">
-                      <strong>Professor:</strong>{" "}
-                      <EditableText field="presentationInfo.professor" className="inline-block min-w-[200px]">
-                        {slide.content.presentationInfo.professor}
-                      </EditableText>
-                    </div>
-                    <div data-testid="presentation-semester">
-                      <strong>Semestre:</strong>{" "}
-                      <EditableText field="presentationInfo.semester" className="inline-block min-w-[100px]">
-                        {slide.content.presentationInfo.semester}
-                      </EditableText>
-                    </div>
-                    <div data-testid="presentation-duration">
-                      <strong>Duração:</strong>{" "}
-                      <EditableText field="presentationInfo.duration" className="inline-block min-w-[300px]">
-                        {slide.content.presentationInfo.duration}
-                      </EditableText>
-                    </div>
-                  </div>
-                </div>
+              {/* 3D Background Image */}
+              <div className="absolute inset-0 z-0 opacity-30">
+                <img 
+                  src={techInnovationImage} 
+                  alt="Inovação Tecnológica 3D" 
+                  className="w-full h-full object-cover"
+                />
               </div>
-
-              {/* Team Members */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-                {slide.content.teamMembers.map((member: any, index: number) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
+              
+              {/* Content */}
+              <div className="relative z-10 flex flex-col h-full justify-between">
+                {/* Title and subtitle - Compact */}
+                <motion.div 
+                  className="text-center mb-4"
+                  initial={{ opacity: 0, y: -30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3, duration: 0.6 }}
+                >
+                  <EditableText field="title" className="text-3xl lg:text-4xl font-bold text-primary mb-2 drop-shadow-lg">
+                    {slide.title}
+                  </EditableText>
+                  <EditableText field="subtitle" className="text-lg text-muted-foreground mb-3 drop-shadow-sm">
+                    {slide.subtitle}
+                  </EditableText>
+                  
+                  {/* Presentation Info - Compact Grid */}
+                  <motion.div 
+                    className="bg-white/90 backdrop-blur-sm rounded-xl p-4 mb-4 shadow-xl border border-white/20"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.5, duration: 0.6 }}
                   >
-                    <Card className="p-4 text-center hover:shadow-md transition-shadow">
-                      <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
-                        <span className="text-2xl font-bold text-primary">
-                          {member.name.split(' ').map((n: string) => n[0]).join('')}
-                        </span>
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 text-sm">
+                      <div data-testid="presentation-course" className="text-center">
+                        <div className="text-xs font-medium text-gray-600 mb-1">Curso</div>
+                        <EditableText field="presentationInfo.course" className="font-semibold text-primary">
+                          {slide.content.presentationInfo.course}
+                        </EditableText>
                       </div>
-                      <EditableText 
-                        field={`teamMember.${index}.name`} 
-                        className="font-semibold text-sm mb-1 text-center" 
-                      >
-                        <h4 data-testid={`member-name-${index}`}>
-                          {member.name}
-                        </h4>
-                      </EditableText>
-                      <EditableText 
-                        field={`teamMember.${index}.role`} 
-                        className="text-xs text-muted-foreground mb-1 text-center"
-                      >
-                        <p data-testid={`member-role-${index}`}>
-                          {member.role}
-                        </p>
-                      </EditableText>
-                      <EditableText 
-                        field={`teamMember.${index}.ra`} 
-                        className="text-xs text-muted-foreground text-center"
-                      >
-                        <p data-testid={`member-ra-${index}`}>
-                          RA: {member.ra}
-                        </p>
-                      </EditableText>
-                    </Card>
+                      <div data-testid="presentation-professor" className="text-center">
+                        <div className="text-xs font-medium text-gray-600 mb-1">Professor</div>
+                        <EditableText field="presentationInfo.professor" className="font-semibold">
+                          {slide.content.presentationInfo.professor}
+                        </EditableText>
+                      </div>
+                      <div data-testid="presentation-semester" className="text-center">
+                        <div className="text-xs font-medium text-gray-600 mb-1">Semestre</div>
+                        <EditableText field="presentationInfo.semester" className="font-semibold">
+                          {slide.content.presentationInfo.semester}
+                        </EditableText>
+                      </div>
+                      <div data-testid="presentation-duration" className="text-center">
+                        <div className="text-xs font-medium text-gray-600 mb-1">Evento</div>
+                        <EditableText field="presentationInfo.duration" className="font-semibold">
+                          {slide.content.presentationInfo.duration}
+                        </EditableText>
+                      </div>
+                    </div>
                   </motion.div>
-                ))}
+                </motion.div>
+
+                {/* Team Members - Optimized Layout */}
+                <motion.div 
+                  className="flex-1 flex items-center justify-center"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.7, duration: 0.8 }}
+                >
+                  <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 w-full max-w-6xl">
+                    {slide.content.teamMembers.map((member: any, index: number) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, rotateY: -90, scale: 0.5 }}
+                        animate={{ opacity: 1, rotateY: 0, scale: 1 }}
+                        transition={{ 
+                          delay: 0.9 + index * 0.15, 
+                          duration: 0.6, 
+                          type: "spring",
+                          stiffness: 100 
+                        }}
+                        whileHover={{ 
+                          scale: 1.05, 
+                          rotateY: 5,
+                          transition: { duration: 0.3 }
+                        }}
+                        className="perspective-1000"
+                      >
+                        <Card className="p-3 text-center hover:shadow-2xl transition-all duration-300 bg-white/95 backdrop-blur-sm border border-white/30 transform-gpu">
+                          <motion.div 
+                            className="w-12 h-12 bg-gradient-to-br from-primary to-purple-600 rounded-full flex items-center justify-center mx-auto mb-2 shadow-lg"
+                            whileHover={{ rotate: 360 }}
+                            transition={{ duration: 0.6 }}
+                          >
+                            <span className="text-lg font-bold text-white">
+                              {member.name.split(' ').map((n: string) => n[0]).join('')}
+                            </span>
+                          </motion.div>
+                          <EditableText 
+                            field={`teamMember.${index}.name`} 
+                            className="font-semibold text-xs mb-1 text-center leading-tight" 
+                          >
+                            <h4 data-testid={`member-name-${index}`} className="text-gray-800">
+                              {member.name}
+                            </h4>
+                          </EditableText>
+                          <EditableText 
+                            field={`teamMember.${index}.role`} 
+                            className="text-xs text-blue-600 mb-1 text-center font-medium"
+                          >
+                            <p data-testid={`member-role-${index}`}>
+                              {member.role}
+                            </p>
+                          </EditableText>
+                          <EditableText 
+                            field={`teamMember.${index}.ra`} 
+                            className="text-xs text-gray-500 text-center"
+                          >
+                            <p data-testid={`member-ra-${index}`}>
+                              RA: {member.ra}
+                            </p>
+                          </EditableText>
+                        </Card>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+
+                {/* 3D Team Collaboration Image */}
+                <motion.div 
+                  className="text-center"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 1.5, duration: 0.8 }}
+                >
+                  <img 
+                    src={teamCollabImage} 
+                    alt="Colaboração em Equipe 3D" 
+                    className="w-full max-w-lg mx-auto h-20 object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+                  />
+                </motion.div>
               </div>
             </motion.div>
           );

@@ -28,10 +28,10 @@ export class MemStorage implements IStorage {
         subtitle: "Captação de Recursos e Gestão de Projetos de Inovação Tecnológica",
         content: {
           presentationInfo: {
-            course: "Gestão de Projetos de Inovação Tecnológica",
+            course: "Inovação Tecnológica",
             professor: "Prof. Dr. Nome do Professor",
             semester: "2025.2",
-            duration: "Seminário sobre Captação de Recursos e Gestão de Projetos de Inovação Tecnológica"
+            duration: "Seminário sobre Captação de Recursos"
           },
           teamMembers: [
             {
