@@ -334,7 +334,7 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="space-y-8"
+            className="space-y-8 pb-24"
           >
             <div className="mb-8">
               <EditableText field="title" className="text-4xl font-bold text-primary mb-4">
@@ -909,7 +909,7 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="space-y-8"
+            className="space-y-8 pb-24"
           >
             <div className="mb-8">
               <EditableText field="title" className="text-4xl font-bold text-primary mb-4">
@@ -1091,7 +1091,7 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="space-y-8"
+            className="space-y-8 pb-24"
           >
             <div className="mb-8">
               <EditableText field="title" className="text-4xl font-bold text-primary mb-4">
@@ -1211,7 +1211,7 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="space-y-8"
+            className="space-y-8 pb-24"
           >
             <div className="mb-8">
               <EditableText field="title" className="text-4xl font-bold text-primary mb-4">
@@ -1236,7 +1236,8 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
                         <p className="font-semibold mb-2">
                           {ref.authors} ({ref.year}). 
                           <a href={ref.url} target="_blank" rel="noopener noreferrer" 
-                             className="text-primary hover:underline">
+                             className="text-primary hover:underline"
+                             data-testid={`link-academic-reference-${index}`}>
                             {ref.title}
                           </a>
                         </p>
@@ -1268,7 +1269,8 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
                       <div className="text-sm">
                         <p className="font-semibold mb-2">
                           <a href={report.url} target="_blank" rel="noopener noreferrer" 
-                             className="text-primary hover:underline">
+                             className="text-primary hover:underline"
+                             data-testid={`link-industry-report-${index}`}>
                             {report.title}
                           </a>
                         </p>
@@ -1298,7 +1300,8 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
                       <div className="text-sm">
                         <p className="font-semibold mb-2">
                           <a href={source.url} target="_blank" rel="noopener noreferrer" 
-                             className="text-primary hover:underline">
+                             className="text-primary hover:underline"
+                             data-testid={`link-data-source-${index}`}>
                             {source.source}
                           </a>
                         </p>
@@ -1325,7 +1328,8 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
                       <div className="text-sm">
                         <p className="font-semibold mb-2">
                           <a href={resource.url} target="_blank" rel="noopener noreferrer" 
-                             className="text-primary hover:underline">
+                             className="text-primary hover:underline"
+                             data-testid={`link-reference-${index}`}>
                             {resource.title}
                           </a>
                         </p>
