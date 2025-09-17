@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { InvestmentChart } from "./investment-chart";
+import { AutoScaleContainer } from "./auto-scale-container";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
@@ -106,60 +107,78 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
         // First slide - Team presentation
         if (slide.content.presentationInfo && slide.content.teamMembers) {
           return (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="h-full flex flex-col justify-center safe-area-container bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800"
-              style={{
-                minHeight: "100dvh"
-              }}
+            <AutoScaleContainer
+              enabled={true}
+              minScale={0.3}
+              maxScale={1}
+              padding={20}
+              className="intro-slide-auto-scale"
+              data-testid="intro-slide-auto-scale"
             >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="min-h-screen min-h-[100dvh] flex flex-col justify-center safe-area-container bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800"
+              >
               {/* Content */}
-              <div className="flex flex-col h-full justify-center max-w-7xl mx-auto w-full">
+              <div className="flex flex-col h-full justify-center max-w-6xl mx-auto w-full">
                 {/* Title and subtitle */}
                 <motion.div 
-                  className="text-center mb-8"
+                  className="text-center mb-6"
                   initial={{ opacity: 0, y: -30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.6 }}
                 >
-                  <EditableText field="title" className="mobile-title tablet-title desktop-title font-bold text-primary mb-4">
+                  <EditableText field="title" className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-primary mb-2 leading-tight">
                     {slide.title}
                   </EditableText>
-                  <EditableText field="subtitle" className="mobile-subtitle tablet-subtitle desktop-subtitle text-muted-foreground mb-8">
+                  <EditableText field="subtitle" className="text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground mb-4 leading-tight">
                     {slide.subtitle}
                   </EditableText>
                   
-                  {/* Presentation Info - Responsive Grid */}
+                  {/* Tema do Seminário - Destaque especial */}
                   <motion.div 
-                    className="bg-white dark:bg-gray-800 rounded-xl p-6 mb-8 shadow-lg border border-gray-200 dark:border-gray-700 max-w-4xl mx-auto"
+                    className="bg-primary/10 rounded-xl p-3 mb-4 border-l-4 border-primary max-w-4xl mx-auto"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.4, duration: 0.6 }}
+                  >
+                    <div className="text-xs font-medium text-primary mb-1">Tema do Seminário</div>
+                    <EditableText field="presentationInfo.title" className="font-bold text-primary text-sm sm:text-base leading-tight">
+                      {slide.content.presentationInfo.title}
+                    </EditableText>
+                  </motion.div>
+                  
+                  {/* Presentation Info - Responsive Grid Compacto */}
+                  <motion.div 
+                    className="bg-white dark:bg-gray-800 rounded-xl p-3 mb-4 shadow-lg border border-gray-200 dark:border-gray-700 max-w-4xl mx-auto"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.5, duration: 0.6 }}
                   >
-                    <div className="responsive-grid gap-4 text-sm">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 text-xs sm:text-sm">
                       <div data-testid="presentation-course" className="text-center">
-                        <div className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">Curso</div>
-                        <EditableText field="presentationInfo.course" className="font-semibold text-primary text-base">
+                        <div className="text-xs font-medium text-gray-600 dark:text-gray-400 mb-1">Curso</div>
+                        <EditableText field="presentationInfo.course" className="font-semibold text-primary text-xs leading-tight">
                           {slide.content.presentationInfo.course}
                         </EditableText>
                       </div>
-                      <div data-testid="presentation-professor" className="text-center">
-                        <div className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">Professor</div>
-                        <EditableText field="presentationInfo.professor" className="font-semibold text-base">
+                      <div data-testid="presentation-professor" className="text-center bg-primary/5 rounded-lg p-2">
+                        <div className="text-xs font-medium text-primary mb-1">👨‍🏫 Professor</div>
+                        <EditableText field="presentationInfo.professor" className="font-bold text-primary text-xs leading-tight">
                           {slide.content.presentationInfo.professor}
                         </EditableText>
                       </div>
                       <div data-testid="presentation-semester" className="text-center">
-                        <div className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">Semestre</div>
-                        <EditableText field="presentationInfo.semester" className="font-semibold text-base">
+                        <div className="text-xs font-medium text-gray-600 dark:text-gray-400 mb-1">Semestre</div>
+                        <EditableText field="presentationInfo.semester" className="font-semibold text-xs">
                           {slide.content.presentationInfo.semester}
                         </EditableText>
                       </div>
                       <div data-testid="presentation-duration" className="text-center">
-                        <div className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-2">Evento</div>
-                        <EditableText field="presentationInfo.duration" className="font-semibold text-base">
+                        <div className="text-xs font-medium text-gray-600 dark:text-gray-400 mb-1">Duração</div>
+                        <EditableText field="presentationInfo.duration" className="font-semibold text-xs leading-tight">
                           {slide.content.presentationInfo.duration}
                         </EditableText>
                       </div>
@@ -167,99 +186,118 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
                   </motion.div>
                 </motion.div>
 
-                {/* Team Members - Simplified Layout */}
+                {/* Team Members - Layout otimizado */}
                 <motion.div 
-                  className="flex justify-center mb-8"
+                  className="flex justify-center flex-1"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.7, duration: 0.8 }}
                 >
-                  <div className="responsive-grid team-grid-mobile team-grid-tablet team-grid-desktop w-full max-w-6xl">
-                    {slide.content.teamMembers.map((member: any, index: number) => (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0, scale: 0.5 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ 
-                          delay: 0.9 + index * 0.15, 
-                          duration: 0.6, 
-                          type: "spring",
-                          stiffness: 100 
-                        }}
-                        whileHover={{ 
-                          scale: 1.05,
-                          transition: { duration: 0.3 }
-                        }}
-                        className="flex flex-col items-center"
-                      >
-                        {/* Photo/Avatar */}
-                        <motion.div 
-                          className="relative w-20 h-20 lg:w-24 lg:h-24 bg-gradient-to-br from-primary to-purple-600 rounded-full flex items-center justify-center mb-4 shadow-lg overflow-hidden border-4 border-white dark:border-gray-700 cursor-pointer group"
-                          whileHover={{ scale: 1.1 }}
-                          transition={{ duration: 0.3 }}
-                          onClick={() => {
-                            if (isEditMode) {
-                              const input = document.createElement('input');
-                              input.type = 'file';
-                              input.accept = 'image/*';
-                              input.onchange = (e) => {
-                                const file = (e.target as HTMLInputElement)?.files?.[0];
-                                if (file) {
-                                  const reader = new FileReader();
-                                  reader.onload = (event) => {
-                                    const result = event.target?.result as string;
-                                    handlePhotoChange(index, result);
-                                  };
-                                  reader.readAsDataURL(file);
-                                }
-                              };
-                              input.click();
-                            }
+                  <div className="w-full max-w-5xl">
+                    <div className="text-center mb-3">
+                      <h3 className="text-base font-semibold text-primary">👥 Equipe do Projeto</h3>
+                      <p className="text-xs text-muted-foreground">Clique na foto para fazer upload da sua imagem</p>
+                    </div>
+                    
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-3">
+                      {slide.content.teamMembers.map((member: any, index: number) => (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, scale: 0.5 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ 
+                            delay: 0.9 + index * 0.1, 
+                            duration: 0.5, 
+                            type: "spring",
+                            stiffness: 100 
                           }}
+                          whileHover={{ 
+                            scale: 1.02,
+                            transition: { duration: 0.3 }
+                          }}
+                          className="flex flex-col items-center bg-white/50 dark:bg-gray-800/50 rounded-lg p-2 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-all duration-300"
                         >
-                          {member.photo ? (
-                            <>
-                              <img 
-                                src={member.photo} 
-                                alt={member.name}
-                                className="w-full h-full object-cover"
-                              />
-                              {isEditMode && (
-                                <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                                  <span className="text-white text-xs">Alterar foto</span>
-                                </div>
-                              )}
-                            </>
-                          ) : (
-                            <>
-                              <span className="text-2xl lg:text-3xl font-bold text-white">
-                                {member.name.split(' ').map((n: string) => n[0]).join('')}
-                              </span>
-                              {isEditMode && (
-                                <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                                  <span className="text-white text-xs">Adicionar foto</span>
-                                </div>
-                              )}
-                            </>
-                          )}
+                          {/* Photo/Avatar */}
+                          <motion.div 
+                            className="relative w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-gradient-to-br from-primary to-purple-600 rounded-full flex items-center justify-center mb-2 shadow-lg overflow-hidden border-2 border-white dark:border-gray-700 cursor-pointer group"
+                            whileHover={{ scale: 1.05 }}
+                            transition={{ duration: 0.3 }}
+                            onClick={() => {
+                              if (isEditMode) {
+                                const input = document.createElement('input');
+                                input.type = 'file';
+                                input.accept = 'image/*';
+                                input.onchange = (e) => {
+                                  const file = (e.target as HTMLInputElement)?.files?.[0];
+                                  if (file) {
+                                    const reader = new FileReader();
+                                    reader.onload = (event) => {
+                                      const result = event.target?.result as string;
+                                      handlePhotoChange(index, result);
+                                    };
+                                    reader.readAsDataURL(file);
+                                  }
+                                };
+                                input.click();
+                              }
+                            }}
+                            data-testid={`button-avatar-upload-${index}`}
+                          >
+                            {member.photo ? (
+                              <>
+                                <img 
+                                  src={member.photo} 
+                                  alt={member.name}
+                                  className="w-full h-full object-cover"
+                                />
+                                {isEditMode && (
+                                  <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                                    <span className="text-white text-xs font-semibold">📸</span>
+                                  </div>
+                                )}
+                              </>
+                            ) : (
+                              <>
+                                <span className="text-sm sm:text-base md:text-xl font-bold text-white">
+                                  {member.name.split(' ').map((n: string) => n[0]).join('')}
+                                </span>
+                                {isEditMode && (
+                                  <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                                    <span className="text-white text-xs font-semibold">📸</span>
+                                  </div>
+                                )}
+                              </>
+                            )}
+                          </motion.div>
+                          
+                          {/* Name and RA */}
+                          <div className="text-center space-y-1">
+                            <EditableText 
+                              field={`teamMember.${index}.name`} 
+                              className="font-bold text-primary text-xs sm:text-sm leading-tight" 
+                            >
+                              <h4 data-testid={`member-name-${index}`} className="text-gray-800 dark:text-gray-200">
+                                {member.name}
+                              </h4>
+                            </EditableText>
+                            <EditableText 
+                              field={`teamMember.${index}.ra`} 
+                              className="text-xs text-muted-foreground font-mono" 
+                            >
+                              <p data-testid={`member-ra-${index}`}>
+                                {member.ra}
+                              </p>
+                            </EditableText>
+                          </div>
                         </motion.div>
-                        
-                        {/* Name */}
-                        <EditableText 
-                          field={`teamMember.${index}.name`} 
-                          className="font-semibold text-center text-sm lg:text-base leading-tight" 
-                        >
-                          <h4 data-testid={`member-name-${index}`} className="text-gray-800 dark:text-gray-200">
-                            {member.name}
-                          </h4>
-                        </EditableText>
-                      </motion.div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </motion.div>
 
               </div>
             </motion.div>
+            </AutoScaleContainer>
           );
         }
         

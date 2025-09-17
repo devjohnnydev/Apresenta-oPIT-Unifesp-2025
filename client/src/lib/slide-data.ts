@@ -11,16 +11,16 @@ export const defaultSlides: SlideData[] = [
         title: "Seminário sobre Captação de Recursos e Gestão de Projetos de Inovação Tecnológica",
         institution: "Digite o nome da Instituição",
         course: "Digite o nome da Disciplina",
-        professor: "Digite o nome do Professor",
+        professor: "Prof. Dr. Nome do Professor",
         semester: "2024.2",
         duration: "20 minutos de apresentação + 20 minutos de discussão"
       },
       teamMembers: [
-        { name: "Membro 1", role: "Coordenador(a) de Pesquisa", ra: "RA 1" },
-        { name: "Membro 2", role: "Especialista em Venture Capital", ra: "RA 2" },
-        { name: "Membro 3", role: "Analista de Mercado", ra: "RA 3" },
-        { name: "Membro 4", role: "Especialista em Startups", ra: "RA 4" },
-        { name: "Membro 5", role: "Pesquisador(a) de Políticas", ra: "RA 5" }
+        { name: "Nome do Integrante 1", role: "Coordenador(a) de Pesquisa", ra: "RA: 00000000" },
+        { name: "Nome do Integrante 2", role: "Especialista em Venture Capital", ra: "RA: 00000000" },
+        { name: "Nome do Integrante 3", role: "Analista de Mercado", ra: "RA: 00000000" },
+        { name: "Nome do Integrante 4", role: "Especialista em Startups", ra: "RA: 00000000" },
+        { name: "Nome do Integrante 5", role: "Pesquisador(a) de Políticas", ra: "RA: 00000000" }
       ],
       backgroundImage: "Team_presentation_academic_background_9df5e1d2.png"
     },
