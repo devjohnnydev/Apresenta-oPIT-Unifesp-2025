@@ -34,9 +34,29 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
     const updatedSlide = { ...slide };
     if (field === 'title' || field === 'subtitle') {
       updatedSlide[field] = value;
-    } else {
-      // Handle nested content updates
-      // This would need to be implemented based on the specific structure
+    } else if (field.startsWith('presentationInfo.')) {
+      // Handle presentationInfo nested fields
+      const nestedField = field.replace('presentationInfo.', '');
+      updatedSlide.content = {
+        ...updatedSlide.content,
+        presentationInfo: {
+          ...updatedSlide.content.presentationInfo,
+          [nestedField]: value
+        }
+      };
+    } else if (field.startsWith('teamMember.')) {
+      // Handle team member nested fields
+      const [, indexStr, memberField] = field.split('.');
+      const index = parseInt(indexStr, 10);
+      const updatedTeamMembers = [...(updatedSlide.content.teamMembers || [])];
+      updatedTeamMembers[index] = {
+        ...updatedTeamMembers[index],
+        [memberField]: value
+      };
+      updatedSlide.content = {
+        ...updatedSlide.content,
+        teamMembers: updatedTeamMembers
+      };
     }
     onUpdateSlide(updatedSlide);
   };
@@ -88,10 +108,30 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
                 {/* Presentation Info */}
                 <div className="bg-card rounded-lg p-6 mb-8 shadow-sm">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                    <div><strong>Curso:</strong> {slide.content.presentationInfo.course}</div>
-                    <div><strong>Professor:</strong> {slide.content.presentationInfo.professor}</div>
-                    <div><strong>Semestre:</strong> {slide.content.presentationInfo.semester}</div>
-                    <div><strong>Duração:</strong> {slide.content.presentationInfo.duration}</div>
+                    <div data-testid="presentation-course">
+                      <strong>Curso:</strong>{" "}
+                      <EditableText field="presentationInfo.course" className="inline-block min-w-[200px]">
+                        {slide.content.presentationInfo.course}
+                      </EditableText>
+                    </div>
+                    <div data-testid="presentation-professor">
+                      <strong>Professor:</strong>{" "}
+                      <EditableText field="presentationInfo.professor" className="inline-block min-w-[200px]">
+                        {slide.content.presentationInfo.professor}
+                      </EditableText>
+                    </div>
+                    <div data-testid="presentation-semester">
+                      <strong>Semestre:</strong>{" "}
+                      <EditableText field="presentationInfo.semester" className="inline-block min-w-[100px]">
+                        {slide.content.presentationInfo.semester}
+                      </EditableText>
+                    </div>
+                    <div data-testid="presentation-duration">
+                      <strong>Duração:</strong>{" "}
+                      <EditableText field="presentationInfo.duration" className="inline-block min-w-[300px]">
+                        {slide.content.presentationInfo.duration}
+                      </EditableText>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -111,15 +151,30 @@ export function SlideContent({ slide, isEditMode, onUpdateSlide }: SlideContentP
                           {member.name.split(' ').map((n: string) => n[0]).join('')}
                         </span>
                       </div>
-                      <h4 className="font-semibold text-sm mb-1" data-testid={`member-name-${index}`}>
-                        {member.name}
-                      </h4>
-                      <p className="text-xs text-muted-foreground mb-1" data-testid={`member-role-${index}`}>
-                        {member.role}
-                      </p>
-                      <p className="text-xs text-muted-foreground" data-testid={`member-ra-${index}`}>
-                        RA: {member.ra}
-                      </p>
+                      <EditableText 
+                        field={`teamMember.${index}.name`} 
+                        className="font-semibold text-sm mb-1 text-center" 
+                      >
+                        <h4 data-testid={`member-name-${index}`}>
+                          {member.name}
+                        </h4>
+                      </EditableText>
+                      <EditableText 
+                        field={`teamMember.${index}.role`} 
+                        className="text-xs text-muted-foreground mb-1 text-center"
+                      >
+                        <p data-testid={`member-role-${index}`}>
+                          {member.role}
+                        </p>
+                      </EditableText>
+                      <EditableText 
+                        field={`teamMember.${index}.ra`} 
+                        className="text-xs text-muted-foreground text-center"
+                      >
+                        <p data-testid={`member-ra-${index}`}>
+                          RA: {member.ra}
+                        </p>
+                      </EditableText>
                     </Card>
                   </motion.div>
                 ))}

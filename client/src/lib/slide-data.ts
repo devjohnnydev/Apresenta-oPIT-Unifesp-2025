@@ -160,7 +160,7 @@ export const defaultSlides: SlideData[] = [
           icon: "fas fa-credit-card",
           color: "blue",
           percentage: "41,5%",
-          amount: "US$ 889 milhões",
+          amount: "R$ 4,9 bilhões",
           description: "Liderança consolidada no ecossistema brasileiro",
           highlights: [
             "Nubank: maior fintech da América Latina",
@@ -179,7 +179,7 @@ export const defaultSlides: SlideData[] = [
           icon: "fas fa-heartbeat",
           color: "red",
           percentage: "16%",
-          amount: "US$ 135,8 milhões",
+          amount: "R$ 748 milhões",
           description: "Impulsionadas pela digitalização da saúde pós-pandemia",
           highlights: [
             "Telemedicina e consultas remotas",
@@ -198,7 +198,7 @@ export const defaultSlides: SlideData[] = [
           icon: "fas fa-seedling",
           color: "green",
           percentage: "16%",
-          amount: "US$ 119,5 milhões",
+          amount: "R$ 659 milhões",
           description: "Aproveitando a força do agronegócio brasileiro",
           highlights: [
             "Agricultura de precisão",
@@ -363,7 +363,7 @@ export const defaultSlides: SlideData[] = [
       ],
       successCases: [
         {
-          name: "Azaas",
+          name: "Asaas",
           sector: "Fintech",
           round: "R$ 820 milhões",
           description: "Maior rodada de 2024 - gestão financeira para PMEs",
@@ -377,10 +377,10 @@ export const defaultSlides: SlideData[] = [
           color: "orange"
         },
         {
-          name: "Asaas",
-          sector: "Fintech",
-          round: "US$ 150 milhões",
-          description: "Soluções de pagamento para pequenos negócios",
+          name: "Mercado Bitcoin",
+          sector: "Crypto/Fintech",
+          round: "R$ 420 milhões",
+          description: "Plataforma de criptomoedas e Web3",
           color: "green"
         }
       ],
