@@ -337,7 +337,7 @@ export class MemStorage implements IStorage {
         order: 10
       },
       {
-        id: "slide-6",
+        id: "slide-11",
         type: "content",
         title: "Proposta de Projeto",
         subtitle: "Microfinanciamento coletivo para startups de impacto",
@@ -360,7 +360,16 @@ export class MemStorage implements IStorage {
             "Aumento da inclusão financeira e engajamento cívico através de investimento participativo",
             "Aceleração de soluções sustentáveis voltadas para problemas sociais e ambientais urgentes",
             "Geração de empregos em regiões periféricas com descentralização da inovação"
-          ],
+          ]
+        },
+        order: 11
+      },
+      {
+        id: "slide-12",
+        type: "content",
+        title: "Fases de Implementação",
+        subtitle: "Cronograma de desenvolvimento do projeto",
+        content: {
           phases: [
             {
               title: "Fase 1: MVP (6 meses)",
@@ -379,10 +388,10 @@ export class MemStorage implements IStorage {
             }
           ]
         },
-        order: 6
+        order: 12
       },
       {
-        id: "slide-7",
+        id: "slide-13",
         type: "discussion",
         title: "Discussão",
         subtitle: "Perguntas para reflexão e debate acadêmico",
@@ -414,13 +423,13 @@ export class MemStorage implements IStorage {
             practical: "Os insights podem orientar políticas governamentais, estratégias de investimento e desenvolvimento de programas de aceleração e incubação de startups."
           }
         },
-        order: 7
+        order: 13
       },
       {
-        id: "slide-8",
+        id: "slide-14",
         type: "conclusion",
-        title: "Conclusão",
-        subtitle: "Síntese dos aprendizados e recomendações estratégicas",
+        title: "Principais Aprendizados",
+        subtitle: "Síntese do cenário brasileiro de investimentos",
         content: {
           learnings: [
             {
@@ -444,7 +453,16 @@ export class MemStorage implements IStorage {
               color: "purple"
             }
           ],
-          futurePerspective: "Tendência de aumento no microfinanciamento coletivo e investimentos de impacto alinhados aos Objetivos de Desenvolvimento Sustentável",
+          futurePerspective: "Tendência de aumento no microfinanciamento coletivo e investimentos de impacto alinhados aos Objetivos de Desenvolvimento Sustentável"
+        },
+        order: 14
+      },
+      {
+        id: "slide-15",
+        type: "conclusion", 
+        title: "Recomendações Estratégicas",
+        subtitle: "Passos práticos para captação de recursos",
+        content: {
           recommendations: [
             {
               title: "Definir modelo de negócio claro",
@@ -473,13 +491,13 @@ export class MemStorage implements IStorage {
             }
           ]
         },
-        order: 8
+        order: 15
       },
       {
-        id: "slide-9",
+        id: "slide-16",
         type: "references",
-        title: "Referências",
-        subtitle: "Bibliografia científica e fontes acadêmicas",
+        title: "Referências - Parte 1",
+        subtitle: "Relatórios, dados estatísticos e casos de sucesso",
         content: {
           categories: [
             {
@@ -531,7 +549,18 @@ export class MemStorage implements IStorage {
                   color: "red"
                 }
               ]
-            },
+            }
+          ]
+        },
+        order: 16
+      },
+      {
+        id: "slide-17",
+        type: "references",
+        title: "Referências - Parte 2",
+        subtitle: "Captação de recursos, editais públicos e ODS",
+        content: {
+          categories: [
             {
               title: "Captação de Recursos",
               icon: "fas fa-download",
@@ -596,7 +625,7 @@ export class MemStorage implements IStorage {
             theme: "Tema I - Startups em Estágio Inicial: O Impulso Inicial, Validação e Construção de Protótipo/MVP"
           }
         },
-        order: 9
+        order: 17
       }
     ];
 
