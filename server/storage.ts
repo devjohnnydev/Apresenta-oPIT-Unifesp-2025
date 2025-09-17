@@ -32,7 +32,16 @@ export class MemStorage implements IStorage {
             professor: "Prof. Dr. Nome do Professor",
             semester: "2025.2",
             duration: "Seminário sobre Captação de Recursos"
-          },
+          }
+        },
+        order: 1
+      },
+      {
+        id: "slide-2",
+        type: "intro",
+        title: "Equipe do Projeto",
+        subtitle: "Especialistas em inovação e gestão de investimentos",
+        content: {
           teamMembers: [
             {
               name: "Johnny Braga de Oliveira",
@@ -66,13 +75,13 @@ export class MemStorage implements IStorage {
             }
           ]
         },
-        order: 1
+        order: 2
       },
       {
-        id: "slide-2",
+        id: "slide-3",
         type: "intro",
-        title: "Tipos de Captação de Recursos",
-        subtitle: "Ecossistema de investimento para startups em estágio inicial",
+        title: "Tipos de Captação de Recursos - Parte 1",
+        subtitle: "Investidores privados e venture capital",
         content: {
           ecosystemImage: true,
           sections: [
@@ -95,7 +104,19 @@ export class MemStorage implements IStorage {
                 "Ticket médio: R$ 1 milhão a R$ 10 milhões",
                 "Foco em startups com modelo de negócio validado e tração no mercado"
               ]
-            },
+            }
+          ]
+        },
+        order: 3
+      },
+      {
+        id: "slide-4",
+        type: "intro",
+        title: "Tipos de Captação de Recursos - Parte 2",
+        subtitle: "Financiamento coletivo e recursos públicos",
+        content: {
+          ecosystemImage: true,
+          sections: [
             {
               title: "Crowdfunding",
               icon: "fas fa-users",
@@ -118,10 +139,10 @@ export class MemStorage implements IStorage {
             }
           ]
         },
-        order: 2
+        order: 4
       },
       {
-        id: "slide-3",
+        id: "slide-5",
         type: "content",
         title: "Desafios e Oportunidades",
         subtitle: "Cenário atual para startups brasileiras",
@@ -161,13 +182,13 @@ export class MemStorage implements IStorage {
             }
           ]
         },
-        order: 3
+        order: 5
       },
       {
-        id: "slide-4",
+        id: "slide-6",
         type: "chart",
-        title: "Evidências e Dados",
-        subtitle: "Volume de investimentos e casos de sucesso",
+        title: "Volume de Investimentos",
+        subtitle: "Crescimento do ecossistema brasileiro 2019-2024",
         content: {
           chartData: {
             labels: ["2019", "2020", "2021", "2022", "2023", "2024"],
@@ -177,7 +198,16 @@ export class MemStorage implements IStorage {
             "Crescimento de 50% nos investimentos em 2024 (R$ 13,9 bilhões)",
             "366 rodadas de investimento realizadas em 2024",
             "Brasil representa 54% do investimento total na América Latina"
-          ],
+          ]
+        },
+        order: 6
+      },
+      {
+        id: "slide-7",
+        type: "content",
+        title: "Casos de Sucesso",
+        subtitle: "Startups brasileiras que transformaram mercados",
+        content: {
           successCases: [
             {
               name: "Nubank",
@@ -199,16 +229,16 @@ export class MemStorage implements IStorage {
             }
           ]
         },
-        order: 3
+        order: 7
       },
       {
-        id: "slide-4",
+        id: "slide-8",
         type: "content",
-        title: "Aplicação Prática",
-        subtitle: "Estratégias para apresentação a investidores",
+        title: "Estratégias de Pitch",
+        subtitle: "Como apresentar sua startup para investidores",
         content: {
           strategies: {
-            title: "Estratégias para Apresentação a Investidores",
+            title: "Elementos Essenciais do Pitch Deck",
             pitchDeck: [
               "Problema: Identifique claramente a dor de mercado",
               "Solução: Sua proposta de valor única",
@@ -222,7 +252,16 @@ export class MemStorage implements IStorage {
               "Destaque o time qualificado por trás da startup",
               "Seja claro sobre quanto precisa e como utilizará o capital"
             ]
-          },
+          }
+        },
+        order: 8
+      },
+      {
+        id: "slide-9",
+        type: "content",
+        title: "Plano de Negócios",
+        subtitle: "Estrutura prática para captação de recursos",
+        content: {
           businessPlan: {
             title: "Exemplo de Plano de Negócios Resumido",
             sections: [
@@ -249,10 +288,10 @@ export class MemStorage implements IStorage {
             ]
           }
         },
-        order: 4
+        order: 9
       },
       {
-        id: "slide-5",
+        id: "slide-10",
         type: "content",
         title: "Impacto Social e Econômico",
         subtitle: "Contribuições das startups para sociedade e economia",
@@ -295,7 +334,7 @@ export class MemStorage implements IStorage {
             { value: "R$ 13,9bi", label: "volume total investido em 2024" }
           ]
         },
-        order: 5
+        order: 10
       },
       {
         id: "slide-6",
